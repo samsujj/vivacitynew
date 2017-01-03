@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5df825f9-a094-4dba-8ffb-0f69915ce741" name="vivacity" url="http://saturn.apogeehost.com/~vivacity/">
+        <fileTransfer host="saturn.apogeehost.com" port="22" privateKey="F:\projects\mppapogee.ppk" rootFolder="/home/vivacity" accessType="SFTP" username="vivacity" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

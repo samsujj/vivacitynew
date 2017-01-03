@@ -1,3 +1,21 @@
+<?php
+require_once ai_cascadepath('includes/modules/store/checkout/functions.php');
+global $AI;
+require_once( ai_cascadepath( 'includes/modules/store/includes/class.cart.php')) ;
+require_once( ai_cascadepath( 'includes/core/classes/breadcrumb.php' ) );
+require_once( ai_cascadepath('includes/plugins/dynamic_fields/class.dynamic_fields.php') );
+
+require_once ai_cascadepath('includes/modules/products/includes/class.product.php');
+
+
+$checkout_userID = get_checkout_userID();
+$cart = new C_cart($checkout_userID, true, store_get_base_url(AI_DEFAULT_STORE_URL, 'iso'));
+
+
+
+
+?>
+
 <div class="container-fluid hometopblock">
     <div class="row">
         <div class="container containerwrapper">
@@ -33,8 +51,8 @@
                     <ul class="list-inline">
                         <li><button class="btn btn-default btnlogin">LOGIN</button></li>
                         <li><button class="btn btn-default btnregister">REGISTER</button></li>
-                        <li class="carticon"><img src="system/themes/vivacity_frontend/images/icon-cart.png"> My Cart ( 0 ) : $0</li>
-                        <li><button class="btn btn-default btncheckout">CHECKOUT</button></li>
+                        <li class="carticon"><img src="system/themes/vivacity_frontend/images/icon-cart.png"> My Cart ( <?php echo intval($cart->count())?> ) : $<?php echo h(number_format($cart->get_total(), 2)); ?></li>
+                        <li><a class="btn btn-default btncheckout" href="/checkoutfrontend">CHECKOUT</a></li>
                     </ul>
                     <div class="searchboxblock">
                         <input type="search" class="searchbox" placeholder="Search" />

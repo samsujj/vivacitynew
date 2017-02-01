@@ -84,7 +84,7 @@ if($accept_term == 0) {
         $se->set_vars_array($vars);
         $se->send($send_to);
 
-        util_redirect('dashboard');
+        util_redirect('vivacity_backend');
 
     }
 

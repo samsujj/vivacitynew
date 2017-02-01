@@ -2,7 +2,7 @@
 
 global $AI;
 $products = array();
-$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `pf`.`folderID`=11 GROUP BY `ps`.`product_id`");
+$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`p`.`alternate_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `pf`.`folderID`=11 GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
 
 
 while($p_res && $product = db_fetch_assoc($p_res)) {
@@ -78,8 +78,10 @@ while($p_res && $product = db_fetch_assoc($p_res)) {
                     <h2><?php echo $product['title'];?></h2>
                     <p><?php echo $AI->get_defaulted_dynamic_area($product['description']);?></p>
                     <div class="btnprogram">
-                        <a class="btnmoreinfo">More Info</a>
-                        <a class="btnaddtocart">Add To Cart</a>
+                        <?php if(!empty($product['alternate_url'])){ ?>
+                        <a class="btnmoreinfo" href="<?php echo $product['alternate_url'];?>">More Info</a>
+                        <?php } ?>
+                        <a class="btnaddtocart" href="javascript:void(0);" onclick="addtocart1('<?php echo $product['product_id'];?>',<?php echo $product['stock_item_id'];?>)">Add To Cart</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">

@@ -105,7 +105,7 @@ if(count($product_images) == 0){
 
                             <div class="righthr"></div>
                             <h3>Product Info</h3>
-                            <p><?php echo $AI->get_defaulted_dynamic_area($product_details['description']);?></p>
+                            <div style="clear: both; text-align: left;"><?php echo $AI->get_defaulted_dynamic_area($product_details['description']);?></div>
                             <!--<div class="productattribute">
                                 <ul class="list-inline">
                                     <li>NO Sugar</li>

@@ -8,7 +8,7 @@
     <div class="container-fluid athlteteblock1">
         <div class="row row-eq-height">
             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 athltetesliderblock">
-                <img src="system/themes/vivacity_frontend/images/sliderbockimg.jpg">
+                <img src="system/themes/vivacity_frontend/images/sliderblockimg.jpg">
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 athlteteblockright">
                 <h2>Athlete</h2>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <h2>Awaken- S7</h2>
-                                <p>Weight loss is much more based on consistent small changes that you make to your diet and supplemental intake. You want to give your body just the right amount of each ingredient needed to maintain a steady burn all day long. The subtle action of Awaken-S7 will give the steady stimulation needed to start the incredible results you will see with our <span>24 HOUR CORE DYNAMICS</span> wellness system.<br>
+                                <p>Weight loss is much more based on consistent small changes that you make to your diet and supplemental intake. You want to give your body just the right amount of each ingredient needed to maintain a steady burn all day long. The subtle action of Awaken-S7 will give the steady stimulation needed to start the incredible results you will see with our <span>24 HOUR CORE DYNAMICS</span> wellness system.<br><br>
                                     Never before have this potent blend of nutritionals been available all in one amazing formula. Understanding how the body works and how it responds to supplements is something that we have absolutely mastered . </p>
                                 <a class="btn btn-default btnaddtocart">Add To Cart</a>
                             </div>
@@ -106,19 +106,19 @@
                             <div class="athlteteblock2bottomimgdiv athlteteblock2bottombox3 bottombox3">
                                 <img src="system/themes/vivacity_frontend/images/athlteteblock2bottomimg3.png" alt="#">
                                 <h2>Rhodiola Rosea</h2>
-                                <p>s a plant native to Russia, Siberia, and Scandinavia. It aids in correcting imbalances within the body caused  by mental or physical stressors. It also helps strenghten the </p>
+                                <p>is a plant native to Russia, Siberia, and Scandinavia. It aids in correcting imbalances within the body caused  by mental or physical stressors. It also helps strenghten the </p>
                             </div>
 
                             <div class="athlteteblock2bottomimgdiv athlteteblock2bottombox2 bottombox2">
                                 <img src="system/themes/vivacity_frontend/images/athlteteblock2bottomimg2.png" alt="#">
                                 <h2>Rhodiola Rosea</h2>
-                                <p>s a plant native to Russia, Siberia, and Scandinavia. It aids in correcting imbalances within the body caused  by mental or physical stressors. It also helps strenghten the </p>
+                                <p>break down body fat and help regulate blood glucose levels. It has amazing antioxidant benefits.</p>
                             </div>
 
                             <div class="athlteteblock2bottomimgdiv athlteteblock2bottombox1 bottombox1">
                                 <img src="system/themes/vivacity_frontend/images/athlteteblock2bottomimg1.png" alt="#">
                                 <h2>Rhodiola Rosea</h2>
-                                <p>s a plant native to Russia, Siberia, and Scandinavia. It aids in correcting imbalances within the body caused  by mental or physical stressors. It also helps strenghten the </p>
+                                <p>contains HCA (hydroxycitric acid), a byproduct of citric acid, as its main ingredient. HCA blocks fat by inhibiting the efforts of citrate lyase, which is an important metabolic enzyme. </p>
 
                             </div>
 
@@ -140,7 +140,7 @@
                             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <h2>Recover</h2>
                                 <p>You may have heard it before and it is actually the TRUTH you need to listen to closely. Sleep is the secret key to immediate and lasting weight loss and management. When you’re sleep-deprived, you body makes more ghrelin which promotes your inability to control hunger, sugar cravings and overall desire to eat during the day.  Besides this cortisol, the hormone that adds inches to your waist line, goes into production overdrive.
-                                    <br>
+                                    <br><br>
                                     <span>RE-VIVE</span> will give you an incredible night's sleep with the energy to jump out of bed to face the day. Wake up stronger, thinner and enthusiastic to meet the new day's challenges.
                                     </p>
                                 <a class="btn btn-default btnaddtocart">Add To Cart</a>
@@ -212,8 +212,7 @@
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <h2>Mobility</h2>
-                                <p>MakeWay Wellness was founded by a group of like- minded people who believe in a full wellness ap- proach to life. Our mission is to change the world one person at a time and empower individuals to learn and grow in all aspects of life. YOU are our reason for striving for excellent health and overall well-being.
-                                    <br>
+                                <p>MakeWay Wellness was founded by a group of like- minded people who believe in a full wellness ap- proach to life. Our mission is to change the world one person at a time and empower individuals to learn and grow in all aspects of life. YOU are our reason for striving for excellent health and overall well-being.<br><br>
                                     We are happy to bring you another natural well- ness product, MakeWay Mobility. Each of our product formulations will be based on efficacy, not cost. This means that each ingredient will be at the most effective level possible ensuring they could easily stand alone. They will be formulated to help people while using the best ingredients possible.Our goal is to meet the needs of the individuals not cater to society and the newest trends.
                                 </p>
                                 <a class="btn btn-default btnaddtocart">Add To Cart</a>
@@ -272,7 +271,7 @@
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <h2>Ignite efc</h2>
-                                <p>R. Rosea is a plant that is native to Russia, Siberia, and Scandinavia. It is the plants root that is used for medicinal purposes. This ingredient can aid with a wide variety of medical conditions. It is said to be an adaptogen...meaning it will aid in correcting imbalances within the body caused by mental or physical stressors. It also works hard on strengthening the immune system. Rhodiola offers antidepressant effects:<br>
+                                <p>R. Rosea is a plant that is native to Russia, Siberia, and Scandinavia. It is the plants root that is used for medicinal purposes. This ingredient can aid with a wide variety of medical conditions. It is said to be an adaptogen...meaning it will aid in correcting imbalances within the body caused by mental or physical stressors. It also works hard on strengthening the immune system. Rhodiola offers antidepressant effects:<br><br>
                                     Improves mood and decreases depression. This herb has also been noted to reduce symptoms of fatigue and increase attention span. As is obvious, the benefits of thisv plant are unlimited.</p>
                                 <a class="btn btn-default btnaddtocart">Add To Cart</a>
                             </div>

@@ -1,3 +1,7 @@
+<?php
+global $AI;
+?>
+
 <div class="container-fluid footerhrlinewrapper">
     <div class="footerhrline"></div>
 </div>
@@ -41,7 +45,7 @@
 
 <div class="container-fluid homeblock10">
     <div class="row">
-        <div class="container">
+        <div class="container homeblock10contentwrapper">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center homeblock10contentleft">
                     <ul class="text-left list-inline">
@@ -50,21 +54,26 @@
                         <li><a href="/vivacity-products">Shop</a></li>
                         <li><a href="javascript:void(0)">Incentives</a></li>
                         <li><a href="/vivacity-products-lists">Products</a></li>
-                        <li><a href="javascript:void(0)">Life</a></li>
-                        <li><a href="javascript:void(0)">JOurney</a></li>
+                        <li><a href="/aboutus">Aboutus</a></li>
+                       <!-- <li><a href="/social-followup">Social</a></li>-->
+                        <li><a href="/videos">Video</a></li>
+                        <li><a href="/frontend-blog">Blog</a></li>
+
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center homeblock10contentright">
                     <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center homeblock10menuleft">
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 text-center homeblock10menuleft">
                             <ul class="text-left">
                                 <h2>MY ACCOUNT</h2>
-                                <li><a href="javascript:void(0)">login</a></li>
-                                <li><a href="javascript:void(0)">My Cart</a></li>
-                                <li><a href="javascript:void(0)">Register</a></li>
+                                <?php if($AI->user->userID == 0){ ?>
+                                    <li><a href="/login">Login</a></li>
+                                    <li><a href="javascript:void(0)">Register</a></li>
+                                <?php } ?>
+                                <li><a href="/shopping-cart-1">My Cart</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 text-center homeblock10menuright">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 text-center homeblock10menuright">
                             <ul class="text-left">
                                 <h2>CONTACT US</h2>
                                 <li><span class="glyphicon glyphicon-map-marker"></span>Florence, Alabama</li>

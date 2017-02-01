@@ -354,7 +354,7 @@ if ( util_is_POST('order_submit') )
 
             if ( $store_mod->allow_zero_dollar_checkouts != 'Yes' && $empty_charge )
             {
-                util_redirect_abs('shopping-cart');
+                util_redirect_abs('shopping-cart-1');
             }
 
 
@@ -521,7 +521,7 @@ if ( util_is_POST('order_submit') )
                 $_SESSION['form_amount_x'] = $_POST['form_amount'];
                 // DrewL :( - Had to abs path because of the clean URLs causing issues in util_redirect
                 //util_redirect_abs('checkout/receipt/' . $order->get_id());
-                util_redirect_abs('/');
+                util_redirect_abs('order-receipt/' . $order->get_id());
             }
             else
             {
@@ -583,7 +583,7 @@ if ( util_is_POST('order_submit') )
                     <input type="hidden" name="bill_country" id="bill_country" rel="bill_region" value="US" />
                     <input type="hidden" name="ship_country" id="ship_country" rel="ship_region" value="US" />
                     <input type="hidden" name="form_time" value="<?= date('Y-m-d H:i:s') ?>" />
-                    <table>
+                    <table align="center">
                         <?php
                         if ( !$AI->user->isLoggedIn() ) {
                             echo '<tbody id="checkout_account_create_info" class="checkout_account_create_info">';
@@ -592,19 +592,22 @@ if ( util_is_POST('order_submit') )
                                 echo '(Optional)';
                             }
                             echo '<input type="hidden" name="referer_id" value="' . (int) $AI->domains->owner_id . '" /></td></tr>';
-                            echo '<tr><th>&nbsp;</th><td><strong>Returning Customer? <a href="login.php?relayURL=checkoutfrontend">Log In</a></strong></td></tr>';
-                            echo '<tr><th>Username</th><td><input type="text" id="username" class="span12" name="username" value="" /></td></tr>';
-                            echo '<tr><th>Password</th><td><input type="password" id="password" class="span12" name="password" value="" /></td></tr>';
-                            echo '<tr><th>Retype</th><td><input type="password" id="retype_password" class="span12" name="retype_password" value="" /></td></tr>';
+                            echo '<tr class="form-group"><th>&nbsp;</th><td><strong>Returning Customer? <a href="login.php?relayURL=checkoutfrontend">Log In</a></strong></td></tr>';
+                            echo '<tr class="form-group"><th>Username</th><td><input type="text" id="username" class="span12" name="username" value="" /></td></tr>';
+                            echo '<tr class="form-group"><th>Password</th><td><input type="password" id="password" class="span12" name="password" value="" /></td></tr>';
+                            echo '<tr class="form-group"><th>Retype Password</th><td><input type="password" id="retype_password" class="span12" name="retype_password" value="" /></td></tr>';
                             echo '</tbody>';
                         } else {
                             echo '<tbody id="checkout_account_create_info" class="checkout_account_create_info">';
                             echo '<tr><th><h2>'.tt('Account').'</h2></th><td>';
-                            echo '<tr><th>&nbsp;</th><td><h2>'.tt('Welcome back').', ' . h(get_checkout_name()) . '</h2></td></tr>';
+                            echo '<tr><th>&nbsp;</th><td><h2><span>'.tt('Welcome back').',</span> ' . h(get_checkout_name()) . '</h2></td></tr>';
                             echo '</tbody>';
                         }
                         ?>
                         </table>
+
+
+                    <div class="hrline"></div>
                     <div class="form-group singlecolumn">
                         <h2>BILLING INFORMATION</h2>
                     </div>
@@ -648,6 +651,7 @@ if ( util_is_POST('order_submit') )
                         </div>
                     </div>
                     <div class="hrline"></div>
+
                     <div class="form-group singlecolumn">
                         <h5 class="text-center">
                             <div class="checkbox">
@@ -657,38 +661,41 @@ if ( util_is_POST('order_submit') )
                                 </label>
                             </div>
                         </h5>
-                        <h2>SHIPPING INFORMATION</h2>
+                        <h2 class="chk_ship_fld">SHIPPING  INFORMATION</h2>
                     </div>
-                    <div class="form-group">
+
+
+
+                    <div class="form-group chk_ship_fld">
                         <label for="firstname">First Name<span>*</span></label>
                         <input type="text" id="ship_first_name" class="form-control" name="ship_first_name" value="<?php echo h(trim($shipad['first_name'])); ?>" />
                         <!---<span class="help-block errormsg">firstname is not valid</span>--->
                     </div>
-                    <div class="form-group">
+                    <div class="form-group chk_ship_fld">
                         <label for="address">Address<span>*</span></label>
                         <input type="text" id="ship_address_line_1" class="form-control" name="ship_address_line_1" value="<?php echo h($shipad['address_line_1']); ?>" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group chk_ship_fld">
                         <label for="lastname">Last Name<span>*</span></label>
                         <input type="text" id="ship_last_name" class="form-control" name="ship_last_name" value="<?php echo h(trim($shipad['last_name'])); ?>" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group chk_ship_fld">
                         <label for="address2">Address Line 2<span>*</span></label>
                         <input type="text" id="ship_address_line_2" class="form-control" name="ship_address_line_2" value="<?php echo h($shipad['address_line_2']); ?>" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group chk_ship_fld">
                         <label for="company">Company<span>*</span></label>
                         <input type="text" id="ship_company" class="form-control" name="ship_company" value="<?php echo h(@$shipad['company']); ?>" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group chk_ship_fld">
                         <label for="city">City<span>*</span></label>
                         <input type="text" id="ship_city" class="form-control" name="ship_city" value="<?php echo h($shipad['city']); ?>" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group chk_ship_fld">
                         <label for="company">Email<span>*</span></label>
                         <input type="text" id="ship_email" class="form-control" name="ship_email" value="<?php echo h($shipad['email']); ?>" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group chk_ship_fld">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 doublecolumn">
                             <label for="city">State<span>*</span></label>
                             <?php echo get_region_input('ship_country', $shipad['country'], 'ship_region', $shipad['region']); ?>
@@ -701,26 +708,36 @@ if ( util_is_POST('order_submit') )
                     <div class="hrline"></div>
                     <div class="form-group singlecolumn">
                         <h2>PAYMENT INFORMATION</h2>
-                        <ul class="list-inline text-center paymentmode">
+                        <!--<ul class="list-inline text-center paymentmode">
                             <li><a><img src="system/themes/vivacity_frontend/images/iconvisa.png"></a></li>
                             <li><a><img src="system/themes/vivacity_frontend/images/iconmastercard.png"></a></li>
                             <li><a><img src="system/themes/vivacity_frontend/images/iconamericanexpress.png"></a></li>
                             <li><a><img src="system/themes/vivacity_frontend/images/icondiscover.png"></a></li>
-                        </ul>
+                        </ul>-->
                     </div>
                     <div class="form-group singlecolumn">
+                        <div class="paymentmode">
+                            <?php echo get_cc_radio('card_type', $ccdata['card_type']);?>
+                        </div>
 
-                        <?php echo get_cc_radio('card_type', $ccdata['card_type']);?>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 tripplecolumn">
+                            <label for="city">Card Name</label>
+                            <input type="text" id="card_name" class="span8" name="card_name" value="<?php echo h($ccdata['first_name'] . ' ' . $ccdata['last_name']); ?>" />
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <label for="city">Card Number</label>
+                            <input type="text" id="card_number" class="span8" name="card_number" value="<?= ( isset($ccdata['card_number']) ? h($ccdata['card_number']) : '' ); ?>" />
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 cardexpiredblock">
+                            <label for="city">Expiry Date</label>
+                            <?php echo get_cc_expire_input('card_exp_mo', 'card_exp_yr', $ccdata['card_exp_mo'], $ccdata['card_exp_yr']); ?>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 tripplecolumn">
+                            <label for="city">CVV</label>
+                            <input type="text" id="card_cvv" name="card_cvv"  class="span4" value="<?= ( isset($ccdata['card_cvv']) ? h($ccdata['card_cvv']) : '' ); ?>" maxlength="8" />
+                        </div>
 
-                        <input type="text" id="card_name" class="span8" name="card_name" value="<?php echo h($ccdata['first_name'] . ' ' . $ccdata['last_name']); ?>" />
-
-                        <input type="text" id="card_number" class="span8" name="card_number" value="<?= ( isset($ccdata['card_number']) ? h($ccdata['card_number']) : '' ); ?>" />
-
-                        <input type="text" id="card_cvv" name="card_cvv"  class="span4" value="<?= ( isset($ccdata['card_cvv']) ? h($ccdata['card_cvv']) : '' ); ?>" maxlength="8" />
-
-                        <?php echo get_cc_expire_input('card_exp_mo', 'card_exp_yr', $ccdata['card_exp_mo'], $ccdata['card_exp_yr']); ?>
-
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 doublecolumn">
+                        <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 doublecolumn">
                             <label for="city">Card Number</label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -750,9 +767,10 @@ if ( util_is_POST('order_submit') )
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 doublecolumn">
                             <label for="city">CVV</label>
                             <input type="text" class="form-control" placeholder="">
-                        </div>
+                        </div>-->
                     </div>
-                    <div class="hrline"></div>
+         <!---Checkout page Review section start here----->
+                    <!--<div class="hrline"></div>
                     <div class="form-group singlecolumn">
                         <h2>REVIEW PURCHASE</h2>
                     </div>
@@ -761,32 +779,50 @@ if ( util_is_POST('order_submit') )
                             <table class="table">
                                 <tr>
                                     <td>ITEM</td>
+                                    <td>Price</td>
                                     <td>QUANTITY</td>
-                                    <td>PRICE</td>
+                                    <td>Total</td>
                                 </tr>
                                 <tr>
+                                    <td>Item Description</td>
+                                    <td>$100</td>
+                                    <td>5</td>
+                                    <td>$500</td>
+                                </tr>
+                                <tr>
+                                    <td>Item Description</td>
+                                    <td>$100</td>
+                                    <td>5</td>
+                                    <td>$500</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
                                     <td>Sub-Total</td>
-                                    <td></td>
                                     <td>$0.00</td>
                                 </tr>
                                 <tr>
+                                    <td></td>
+                                    <td></td>
                                     <td>Shipping</td>
-                                    <td></td>
                                     <td>$0.00</td>
                                 </tr>
                                 <tr>
+                                    <td></td>
+                                    <td></td>
                                     <td>Tax</td>
-                                    <td></td>
                                     <td>$0.00</td>
                                 </tr>
                                 <tr>
-                                    <td>TOTAL</td>
                                     <td></td>
+                                    <td></td>
+                                    <td>TOTAL</td>
                                     <td>$0.00</td>
                                 </tr>
                             </table>
                         </div>
-                    </div>
+                    </div>-->
+          <!---Checkout page Review section END here----->
                     <div class="hrline"></div>
                     <div class="form-group singlecolumn">
                         <h2>TERMS & CONDITIONS</h2>

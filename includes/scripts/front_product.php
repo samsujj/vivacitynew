@@ -1,7 +1,7 @@
 <?php
 
 $products = array();
-$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `pf`.`folderID`=12 GROUP BY `ps`.`product_id`");
+$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `pf`.`folderID`=1 GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
 
 while($p_res && $product = db_fetch_assoc($p_res)) {
     $products[] = $product;
@@ -29,11 +29,18 @@ while($p_res && $product = db_fetch_assoc($p_res)) {
                         if(!file_exists($img_path)){
                             $img_path="system/themes/vivacity_frontend/images/defaultproduct.png";
                         }
+
+                        $id = $product['product_id'];
+                        $title = $product['title'];
+                        $url_title = strtolower($title);
+                        $url_title = preg_replace("/[^a-z0-9_\s-]/", "", $url_title);
+                        $url_title = preg_replace("/[\s-]+/", " ", $url_title);
+                        $url_title = preg_replace("/[\s_]/", "-", $url_title);
                         ?>
 
                         <div class="spblock1singleproduct">
                             <div class="spblock1productwrapper">
-                                <img src="<?php echo $img_path;?>">
+                                <a href="/product-info/<?php echo $id;?>/<?php echo $url_title;?>"><img src="<?php echo $img_path;?>"></a>
                             </div>
                         </div>
 
@@ -65,6 +72,8 @@ while($p_res && $product = db_fetch_assoc($p_res)) {
             $url_title = preg_replace("/[\s_]/", "-", $url_title);
 
             $desc= $AI->get_defaulted_dynamic_area($product['description']);
+
+            $desc=strip_tags($desc);
 
             if(strlen($desc) > 300)
             {

@@ -1,6 +1,7 @@
 <?php
 
-global $AI;
+
+
 require_once(ai_cascadepath('includes/plugins/landing_pages/class.landing_pages.php'));
 $landing_page = new C_landing_pages('prelauch');
 
@@ -8,7 +9,8 @@ $orderid = $landing_page->session['created_order'];
 $username = $landing_page->session['form_data']['username'];
 $replcated_url = 'http://'.$username.'.vivacitygo.com';
 
-$o_res = db_query("SELECT `o`.`userID`,`o`.`date_added`,`o`.`billing_addr`,`o`.`shipping_addr`,`o`.`shipping`,`o`.`tax`,`o`.`total`,`od`.* FROM `orders` `o` INNER JOIN `order_details` `od` ON `o`.`order_id` = `od`.`order_id` WHERE `o`.`order_id` = ".$orderid);
+
+$o_res = db_query("SELECT `o`.`userID`,`o`.`date_added`,`o`.`billing_addr`,`o`.`shipping_addr`,`o`.`shipping`,`o`.`tax`,`o`.`total`,`o`.`source_type`,`o`.`source_name`,`od`.* FROM `orders` `o` INNER JOIN `order_details` `od` ON `o`.`order_id` = `od`.`order_id` WHERE `o`.`order_id` = ".$orderid);
 
 $total_amnt = 0.00;
 $shipping = 0.00;
@@ -29,6 +31,7 @@ $product_html = '<tr>
 
 
 while($o_res && $order = db_fetch_assoc($o_res)) {
+
 
     $billing_addr = $order['billing_addr'];
     $billing_addr = unserialize($billing_addr);
@@ -89,7 +92,10 @@ while($o_res && $order = db_fetch_assoc($o_res)) {
 
     <!--<h3>Thank you for placing your order. We will get back to you soon</h3>-->
 
-    <h4>Your Pre-launch Replicated URL is: <a href="<?php echo $replcated_url.'/prelaunch?ai_bypass=true';?>"><?php echo $replcated_url;?>/prelaunch?ai_bypass=true</a></h4>
+
+
+   <h4>Your Pre-launch Replicated URL is: <a href="<?php echo $replcated_url.'/prelaunch?ai_bypass=true';?>"><?php echo $replcated_url;?>/prelaunch?ai_bypass=true</a></h4>
+
     <div class="success_table_block">
 
 

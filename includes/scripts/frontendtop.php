@@ -7,7 +7,6 @@ require_once( ai_cascadepath('includes/plugins/dynamic_fields/class.dynamic_fiel
 
 require_once ai_cascadepath('includes/modules/products/includes/class.product.php');
 
-
 $checkout_userID = get_checkout_userID();
 $cart = new C_cart($checkout_userID, true, store_get_base_url(AI_DEFAULT_STORE_URL, 'iso'));
 
@@ -49,9 +48,15 @@ $cart = new C_cart($checkout_userID, true, store_get_base_url(AI_DEFAULT_STORE_U
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 homelogoblockright">
                     <ul class="list-inline">
-                        <li><button class="btn btn-default btnlogin">LOGIN</button></li>
-                        <li><button class="btn btn-default btnregister">REGISTER</button></li>
-                        <li class="carticon"><img src="system/themes/vivacity_frontend/images/icon-cart.png"> My Cart ( <?php echo intval($cart->count())?> ) : $<?php echo h(number_format($cart->get_total(), 2)); ?></li>
+
+                        <?php if($AI->user->userID == 0){ ?>
+
+                            <li><a class="btn btn-default btnlogin" href="/login">LOGIN</a></li>
+                            <li><a class="btn btn-default btnregister" href="javascript:void(0);">REGISTER</a></li>
+
+                        <?php } ?>
+
+                        <li class="carticon"><img src="system/themes/vivacity_frontend/images/icon-cart.png"><a href="/shopping-cart-1"> My Cart </a>( <?php echo intval($cart->count())?> ) : $<?php echo h(number_format($cart->get_total(), 2)); ?></li>
                         <li><a class="btn btn-default btncheckout" href="/checkoutfrontend">CHECKOUT</a></li>
                     </ul>
                     <div class="searchboxblock">
@@ -84,18 +89,18 @@ $cart = new C_cart($checkout_userID, true, store_get_base_url(AI_DEFAULT_STORE_U
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="/">Home</a></li>
-                            <li>
-                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Shop
+                            <li class=" shop dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Shop
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/vivacity-products">Products</a></li>
-                                    <li><a href="javascript:void(0)">Programs</a></li>
+                                    <li><a href="/vivacity-programs">Programs</a></li>
                                 </ul>
                             </li>
                             <li><a href="vivacity-products-lists">Products</a></li>
-                            <li>
-                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Journey
+                            <li class=" journey dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Journey
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -104,13 +109,14 @@ $cart = new C_cart($checkout_userID, true, store_get_base_url(AI_DEFAULT_STORE_U
                             </li>
                             <li><a href="/programs">Programs</a></li>
                             <li><a href="javascript:void(0)">Incentives</a></li>
-                            <li>
-                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Life
+                            <li class=" life dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Life
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/social-followup">Social</a></li>
+                                   <!-- <li><a href="/social-followup">Social</a></li>-->
                                     <li><a href="/videos">Videos</a></li>
+                                    <li><a href="/blogs">Blog</a></li>
                                 </ul>
                             </li>
                         </ul>

@@ -108,7 +108,7 @@ $cart = new C_cart($checkout_userID, true, store_get_base_url(AI_DEFAULT_STORE_U
                                 </ul>
                             </li>
                             <li><a href="/programs">Programs</a></li>
-                            <li><a href="javascript:void(0)">Incentives</a></li>
+                            <li><a href="/cannabinoides">Cannabinoides</a></li>
                             <li class=" life dropdown">
                                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Life
                                     <b class="caret"></b>

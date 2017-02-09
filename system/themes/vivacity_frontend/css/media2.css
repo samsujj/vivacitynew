@@ -1,16 +1,39 @@
 /*Home page media css----*/
 
 @media only screen and (max-width: 1890px) {
-    .carousel-caption {
+    /*.carousel-caption {
         margin-top: 385px;
         margin-left: 864px !important;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 1820px) {
-    .carousel-caption {
+   /* .carousel-caption {
         margin-top: 355px;
         margin-left: 820px !important;
+    }*/
+    .bannerwrapper .item:nth-child(1) .carousel-caption {
+        margin-top: 225px;
+        margin-left: 1074px !important;
+        width: 524px;
+    }
+    .bannerwrapper .item:nth-child(2) .carousel-caption {
+        margin-top: 225px;
+        margin-left: 1074px !important;
+        width: 524px;
+    }
+    .bannerwrapper .item:nth-child(3) .carousel-caption {
+        margin-top: 158px;
+        margin-left: 1051px !important;
+        width: 524px;
+    }
+    .bannerwrapper .item:nth-child(4) .carousel-caption {
+        margin-top: 169px;
+        margin-left: 1056px !important;
+        width: 524px;
+    }
+    .captionwrapperinner .carousel-caption h4 {
+        font-size: 36px;
     }
 }
 
@@ -46,6 +69,22 @@
 
 
 @media only screen and (max-width: 1666px) {
+    .bannerwrapper .item:nth-child(1) .carousel-caption {
+        margin-top: 185px;
+        margin-left: 894px !important;
+      }
+    .bannerwrapper .item:nth-child(2) .carousel-caption {
+        margin-top: 94px;
+        margin-left: 859px !important;
+    }
+    .bannerwrapper .item:nth-child(3) .carousel-caption {
+        margin-top: 100px;
+        margin-left: 880px !important;
+    }
+    .bannerwrapper .item:nth-child(4) .carousel-caption {
+        margin-top: 100px;
+        margin-left: 880px !important;
+    }
     .athlteteblock2topblock1 {
         height: auto;
         padding-bottom: 30px;
@@ -62,7 +101,7 @@
         padding-bottom: 30px;
     }
     .homeblock6bgimgwrapper {
-        margin-right: -40px;
+        margin-right: -4px;
     }
     .homeblock1content4 h2 {
         font-size: 32px;
@@ -99,7 +138,7 @@
     }
     .homeblock2content{padding-top: 15px;}
     .hometopnavblock .navbar-default .nav>li>a {
-        padding: 14px 45px;
+        padding: 14px 40px;
     }
 
     .homeblock2 .homeblock2content p {
@@ -119,7 +158,7 @@
     .homeblock3bgimgwrapper {
         float: left;
         text-align: left;
-        margin-left: -210px;
+        margin-left: -260px;
     }
     .homeblock3bgcontentrightcontent p {
         font-size: 16px;
@@ -132,11 +171,11 @@
         float: left;
         text-align: left;
         margin-left: 0px;
-        width: 57%;
     }
-    
+
     .homeblock5bgcontentrightcontent p {
         font-size: 16px;
+        padding: 24px 175px 0px 13.85%;
     }
 
     .homeblock6bgcontentrightcontent p{
@@ -175,17 +214,23 @@
         padding-top: 0px;
         padding-bottom: 30px;
     }
-    .homeblock14 {
+    /*.homeblock14 {
         background: url(../images/homeblock14leftimgbg.png) no-repeat left -120px bottom #fff;
+    }*/
+    .captionwrapper {
+        left: -53.8%;
     }
-
+    .bannerwrapper .item:nth-child(2) .carousel-caption {
+        margin-top: 94px;
+        margin-left: 920px !important;
+    }
 }
 
 @media only screen and (max-width: 1640px) {
     .homeblock3bgimgwrapper {
         float: left;
         text-align: left;
-        margin-left: -196px;
+        margin-left: -290px;
     }
 }
 
@@ -197,6 +242,24 @@
 }
 
 @media only screen and (max-width: 1610px) {
+
+    .bannerwrapper .item:nth-child(1) .carousel-caption {
+        margin-top: 185px;
+        margin-left: 845px !important;
+    }
+    .bannerwrapper .item:nth-child(2) .carousel-caption {
+        margin-top: 94px;
+        margin-left: 845px !important;
+    }
+    .bannerwrapper .item:nth-child(3) .carousel-caption {
+        margin-top: 100px;
+        margin-left: 825px !important;
+    }
+    .bannerwrapper .item:nth-child(4) .carousel-caption {
+        margin-top: 100px;
+        margin-left: 825px !important;
+    }
+
     .homeblock2 .homeblock2wrapper {
         width: 84%;
     }
@@ -343,20 +406,21 @@
     .carousel-caption {
         margin-left: 674px !important;
     }
-    .homeblock14 {
+   /* .homeblock14 {
         background: url(../images/homeblock14leftimgbg.png) no-repeat left -160px bottom #fff;
-    }
+    }*/
 }
 
 
 @media only screen and (max-width: 1580px) {
-    .carousel-caption {
-        margin-left: 650px !important;
-    }
 
-    .homeblock14 {
-        background: url(../images/homeblock14leftimgbg.png) no-repeat left -100px bottom #fff;
+    .bannerwrapper .item:nth-child(1) .carousel-caption {
+        margin-top: 185px;
+        margin-left: 730px !important;
     }
+   /* .homeblock14 {
+        background: url(../images/homeblock14leftimgbg.png) no-repeat left -100px bottom #fff;
+    }*/
 }
 
 
@@ -365,13 +429,13 @@
     .athlteteblock1 p {
         min-height: 275px;
     }
+    .homeblock6bgimgwrapper {
+        margin-right: -128px;
+    }
     /*.hometopnavblock .navbar-default .nav>li>a {
         padding: 14px 46px;
     }*/
-    .carousel-caption {
-        margin-left: 562px !important;
-        margin-top: 248px;
-    }
+
     .captionwrapper {
         left: -51%;
     }
@@ -410,8 +474,8 @@
         padding: 10px 16% 0px 207px;
     }
 
-    .homeblock6bgimgwrapper{
-        margin-right: -215px;
+    .homeblock6bgimgwrapper {
+        margin-right: -66px;
     }
     .homeblock6bgcontentrightcontent h2 {
         padding: 10px 16% 0px 207px;
@@ -469,6 +533,9 @@
     .homeblock1content2 h2 {
         font-size: 29px;
     }
+  /*  .homeblock14 {
+        background: url(../images/homeblock14leftimgbg.png) no-repeat left -180px bottom #fff;
+    }*/
 }
 
 
@@ -485,7 +552,7 @@
     }
 
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 45px;
+        padding: 14px 38px;
     }
 
     .homeblock2content {
@@ -544,27 +611,16 @@
     .bottom4box2 {
         width: 353px;
     }
-    .carousel-caption {
-        margin-left: 521px !important;
-        margin-top: 260px;
-    }
-
 
 }
 
 @media only screen and (max-width: 1430px) {
-    .carousel-caption {
-        margin-left: 500px !important;
-        margin-top: 239px;
-    }
+
 }
 
 
 @media only screen and (max-width: 1420px) {
-    .carousel-caption {
-        margin-left: 480px !important;
-        margin-top: 215px;
-    }
+
 }
 @media only screen and (max-width: 1400px) {
     .athlteteblock1 p {
@@ -585,9 +641,7 @@
     .homeblock1content2 h2 {
         font-size: 25px;
     }
-    .carousel-caption {
-        margin-left: 474px !important;
-    }
+
     .athlteteblock3topblock3 {
         background-position: right -180px top 0px;
         background-size: contain;
@@ -600,12 +654,10 @@
 }
 
 @media only screen and (max-width: 1390px) {
-    .carousel-caption {
-        margin-left: 465px !important;
-    }
-    .homeblock14 {
+
+   /* .homeblock14 {
         background: url(../images/homeblock14leftimgbg.png) no-repeat left -280px bottom #fff;
-    }
+    }*/
     .homeblock14wrapper .titleheader h1 {
         color: #262525;
         font-family: "RalewayBold";
@@ -613,7 +665,7 @@
         margin: 0;
         text-transform: uppercase;
         margin-top: 30px;
-        line-height: 60px;
+        line-height: 50px;
     }
 }
 
@@ -634,7 +686,13 @@
     }
 
     .homeblock3bgimgwrapper {
-        margin-left: -280px;
+        margin-left: -350px;
+    }
+
+    .homeblock7bgimgwrapper {
+        float: left;
+        text-align: left;
+        margin-left: -94px;
     }
 
     .homeblock2 .homeblock2content h2 {
@@ -793,15 +851,10 @@
 }
 
 @media only screen and (max-width: 1345px){
-    .carousel-caption {
-        margin-left: 440px !important;
-    }
+
 }
 @media only screen and (max-width: 1340px){
-    .carousel-caption {
-        margin-top: 155px;
-        margin-left: 390px !important;
-    }
+
 
     .captionwrapper {
         left: -43%;
@@ -823,15 +876,12 @@
 
 @media only screen and (max-width: 1316px) {
     .hometopnavblock .navbar-default .nav>li>a {
-        padding: 14px 38px;
+        padding: 14px 36px;
     }
     .brillianceblock4topblock3 {
         background-position: right -135px bottom 0px;
     }
-    .carousel-caption {
-        margin-top: 155px;
-        margin-left: 372px !important;
-    }
+
 }
 
 
@@ -858,10 +908,7 @@
         height: auto;
     }
 
-    .carousel-caption {
-        margin-top: 160px;
-        margin-left: 360px !important;
-    }
+
     .homeblock2wrapper {
         width: 100%;
     }
@@ -876,10 +923,17 @@
         padding-right: 0px;
         padding-left: 0px;
     }
+
     .homeblock1single {
+        width: 47%;
+        margin: 1%;
+    }
+
+
+    /*.homeblock1single {
         width: 30.33%;
     }
-    .homeblock1single{margin: 1%;}
+    .homeblock1single{margin: 1%;}*/
     .footerhrlinewrapper{
         width:98%;
     }
@@ -944,7 +998,7 @@
 
 @media only screen and (max-width: 1299px) {
     .homeblock4bgimgwrapper {
-        margin-right: -215px;
+        margin-right: -80px;
     }
 
     .homeblock2content {
@@ -976,7 +1030,7 @@
 
     .homeblock5bgimgwrapper {
         text-align: left;
-        margin-left: -280px;
+        margin-left: -80px;
     }
 
     .homeblock5bgcontentrightcontent h2 {
@@ -1098,7 +1152,7 @@
 
 @media only screen and (max-width: 1240px) {
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 36px !important;
+        padding: 14px 32px !important;
     }
     .homeblock6bgimgwrapper img {
         float: right;
@@ -1121,7 +1175,7 @@
 
     .homeblock6bgimgwrapper img {
         float: right;
-        margin-right: -180px;
+        margin-right: -58px;
     }
 
 
@@ -1161,26 +1215,39 @@
         margin-left: 315px !important;
     }
     .homeblock4bgimgwrapper {
-        margin-right: 25px;
+        margin-right: 0px;
     }
 }
 
 @media only screen and (max-width: 1220px) {
-    .carousel-caption {
-        margin-top: 154px;
-        margin-left: 300px !important;
-    }
+
 }
 
 @media only screen and (max-width: 1220px) {
-    .carousel-caption {
-        margin-top: 154px;
-        margin-left: 303px !important;
-    }
+
 }
 
 
 @media only screen and (max-width: 1199px) {
+    .bannerwrapper .item:nth-child(1) .carousel-caption, .bannerwrapper .item:nth-child(2) .carousel-caption, .bannerwrapper .item:nth-child(3) .carousel-caption, .bannerwrapper .item:nth-child(4) .carousel-caption {
+        margin-top: 0;
+        margin-left: auto !important;
+        margin-right: auto;
+        text-align: center;
+        width: 100% !important;
+        display: block;
+    }
+    .carousel-caption {
+        left: 0px;
+        padding-bottom: 10px;
+        padding-top: 43px;
+    }
+    .carousel-caption {
+        left: 0px;
+    }
+    .captionwrapperinner .carousel-caption h4{
+        margin-top: 24px;
+    }
     .homeblock14{
         background: none;
         background-color: #fff;
@@ -1265,7 +1332,7 @@
         padding: 14px 56px;
     }
     .carousel-caption {
-        width: 90% !important;
+        width: 100% !important;
         right: 0%;
         left: 0%;
         margin: 0 auto;
@@ -1279,6 +1346,7 @@
         left: 0 !important;
         transform: skew(0deg, 0deg) !important;
         height: auto !important;
+        text-align: center;
     }
     .captionwrapperinner {
         -webkit-transform: skew(-40deg, 0deg) !important;
@@ -1350,7 +1418,7 @@
         padding: 0px 15px 0px 15px;
     }
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 33px !important;
+        padding: 14px 30px !important;
     }
     .homeblock2 .video-container-wrapper {
         padding-top: 95px !important;
@@ -1364,6 +1432,7 @@
     }
     .homeblock3bgcontentrightcontent h2 {
         font-size: 27px;
+        line-height: 27px;
         padding: 30px 90px 0px 5%;
     }
 
@@ -1383,20 +1452,28 @@
         float: right;
         margin-right: 0px;
     }
+    .homeblock4bgcontentrightcontent h2 {
+        font-size: 27px;
+        line-height: 27px;
+    }
 
     .homeblock5bgimgwrapper {
         float: none;
         text-align: center;
-        margin-left: -50%;
         position: inherit;
     }
     .homeblock5bgcontentrightcontent h2 {
         font-size: 27px;
-        padding: 30px 90px 0px 5%;
+        line-height: 27px;
+        padding: 0px 90px 0px 5%;
     }
     .homeblock6bgimgwrapper img {
         float: right;
         margin-right: 0px;
+    }
+    .homeblock6bgcontentrightcontent h2 {
+        font-size: 27px;
+        line-height: 27px;
     }
     .homeblock7bgimgwrapper {
         float: none;
@@ -1406,6 +1483,7 @@
     }
     .homeblock7bgcontentrightcontent h2 {
         font-size: 27px;
+        line-height: 27px;
         padding: 30px 90px 0px 5%;
     }
     .innerpageprodcontentboxwrapper img {
@@ -1795,7 +1873,7 @@
 
 @media only screen and (max-width: 1160px) {
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 31px !important;
+        padding: 14px 28px !important;
     }
     .homeblock4bgimgwrapper {
         margin-right: -170px;
@@ -1805,17 +1883,20 @@
 
 @media only screen and (max-width: 1140px) {
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 29px !important;
+        padding: 14px 26px !important;
     }
     .homeblock4bgimgwrapper {
         margin-right: -178px;
+    }
+    .homeblock5bgimgwrapper {
+        margin-left: -200px;
     }
 }
 
 
 @media only screen and (max-width: 1100px) {
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 23px !important;
+        padding: 14px 20px !important;
     }
     .homeblock3bgimgwrapper {
         text-align: left;
@@ -1823,7 +1904,7 @@
     }
     .homeblock5bgimgwrapper {
         text-align: left;
-        margin-left: -500px;
+        margin-left: -115px;
     }
     .homeblock7bgimgwrapper {
         text-align: left;
@@ -1942,13 +2023,14 @@
 
 
 @media only screen and (max-width: 1024px) {
+
     .videoblock1rightblock3 ul.list-inline > li {
         padding-right: 1px;
         padding-left: 1px;
     }
 
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 21px !important;
+        padding: 14px 18px !important;
     }
     .athlteteblock2singlelist p {
         margin-bottom: 8px !important;
@@ -1989,6 +2071,12 @@
 }
 
 @media only screen and (max-width: 991px) {
+    .homeblock6bgcontentrightcontent h2{
+        font-size: 30px;
+    }
+
+
+
     .videoblock1rightblock3 ul.list-inline > li {
         padding-right: 1px;
         padding-left: 1px;
@@ -2146,7 +2234,7 @@
         margin: 1%;
     }
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 16px !important;
+        padding: 14px 12px !important;
     }
     .hometopblockleft{
         padding-right: 0px !important;
@@ -2154,7 +2242,13 @@
     }
     .homelogoblockleft .logowrapper {margin: 0 auto; width: 448px;}
     .homelogoblockright .list-inline {margin-left: auto;margin-right: auto;display: block; float: none;}
-    .homelogoblockright .searchboxblock {margin: 0px auto; float: none;width: 100%;}
+    .homelogoblockright .searchboxblock {
+        padding: 0px;
+        margin: 0px;
+        float: right;
+        width: 603px;
+        padding-top: 10px !important;
+    }
 
     .homelogoblock .logowrapper {padding-top: 10px;}
 
@@ -2370,7 +2464,7 @@
         margin-right: auto;
     }
     .homeblock4bgimgwrapper img {
-        width: 120%;
+        width: 100%;
         float: none;
         margin-right: auto;
     }
@@ -2514,7 +2608,7 @@
         margin-right: auto;
     }
     .homeblock6bgimgwrapper img {
-        width: 120%;
+        width: 100%;
         float: none;
         margin-right: auto;
     }
@@ -2818,7 +2912,7 @@
 }
 @media only screen and (max-width: 910px) {
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 14px !important;
+        padding: 14px 10px !important;
     }
     .sprogblock1middle p {
         margin: 0px;
@@ -2828,7 +2922,7 @@
 
 @media only screen and (max-width: 880px) {
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 17px !important;
+        padding: 14px 14px !important;
     }
     .hometopnavblock .navbar-default .nav > li > a {
         font-size: 20px;
@@ -2856,7 +2950,7 @@
 
 @media only screen and (max-width: 840px) {
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 15px !important;
+        padding: 14px 12px !important;
     }
 }
 
@@ -2877,7 +2971,7 @@
         width: 59%;
     }
     .hometopnavblock .navbar-default .nav > li > a {
-        padding: 14px 12px !important;
+        padding: 14px 9px !important;
     }
     .btngreensc, .btngreensc:hover {
         padding: 13px 12px !important;
@@ -3352,6 +3446,10 @@
     .viproductlists {
         width: 328px !important;
     }
+    .homeblock14wrapper .titleheader{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
 
@@ -3495,6 +3593,10 @@
 }
 
 @media only screen and (max-width: 540px) {
+    .homeblock14 p {
+        padding: 0 10px 0 10px;
+    }
+
     .viproductlists ul.list-inline > li:nth-child(even){
         margin-right: 0px;
     }
@@ -3609,6 +3711,11 @@
 
 
 @media only screen and (max-width: 480px) {
+    .homeblock14wrapper .titleheader h1 {
+        font-size: 34px;
+        line-height: 38px;
+    }
+
 
     .recentblogmainfooterlist .blogmainfooterlist {
         margin-bottom: 0px;

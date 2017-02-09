@@ -207,15 +207,17 @@ a,a:hover{cursor:pointer;}
 .hometopblock{
     background-color: #fff;
     border-bottom: 2px solid #91b72d;
-    font-family: "EngraversGothicBT";
-    font-size: 20px;
+    font-family: "RalewaySemiBold";
+    font-size: 18px;
     color: #3f3d3d;
     line-height: 20px;
     position: relative;
     padding-top: 10px;
     padding-bottom: 11px;
+    text-transform: uppercase;
 }
-.hometopblock ol, .hometopblock ul {margin-top: 0; margin-bottom: 0px;}
+
+.hometopblock ol, .hometopblock ul {margin-top: 6px; margin-bottom: 0px;}
 .hometopblockleft ul li{margin-right: 15px; cursor:pointer;}
 .hometopblockleft ul li:last-child{margin-right: 0px;}
 .hometopblockright ul li span{margin-right: 0px;}
@@ -235,8 +237,18 @@ a,a:hover{cursor:pointer;}
 /*---homelogoblockcss---*/
 .homelogoblock{padding-top: 4px; padding-bottom: 4px;}
 .homelogoblock .logowrapper {margin: 0;padding: 0; padding-top: 16px;}
-.homelogoblockright ul{text-align: right; float: right; font-family: "EngraversGothicBT"; font-size:18px; text-align: center; line-height: 18px; color:#3f3d3d; margin-top: 0; margin-bottom: 0px; padding-bottom: 10px;}
-.homelogoblockright ul li > .btn{font-family: "EngraversGothicBT"; font-size:18px;color:#3f3d3d; line-height: 18px; box-shadow: none !important;}
+.homelogoblockright ul{text-align: right; float: right;
+    font-family: "RalewaySemiBold";
+    font-size: 16px;
+    text-align: center;
+    line-height: 18px;
+    color: #3f3d3d;
+    margin-top: 0;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+.homelogoblockright ul li > .btn{font-family: "RalewaySemiBold"; font-size:18px;color:#3f3d3d; line-height: 18px; box-shadow: none !important;}
 .homelogoblockright ul li > .btn.btnlogin{border-radius: 0px; padding-right: 15px; padding-left: 15px; border: 1px solid #fff; padding-top: 0px; padding-bottom: 0px; box-shadow: none !important;}
 .homelogoblockright ul li > .btn.btnregister{border-radius: 0px; padding-right: 15px; padding-left: 15px; border: 1px solid #fff;padding-top: 0px; padding-bottom: 0px; box-shadow: none !important;}
 
@@ -261,7 +273,7 @@ a,a:hover{cursor:pointer;}
 .homelogoblockright .list-inline {margin-left: -22px;}
 .homelogoblockright .list-inline>li:last-child{padding-right: 0px; padding-left: 0px;}
 .homelogoblockright .searchboxblock{padding: 0px; margin: 0px; float: right; width:590px; padding-top: 10px !important;}
-.homelogoblockright .searchboxblock input[type="search"]{color: #3f3d3d;font-family: "EngraversGothicBT"; font-size:24px; background-color: #fff; display: inline-block; padding: 10px 12px; margin-bottom: 0; text-align: left; border-radius: 0px;border: 1px solid #ccc; width:100%;background: url("../images/icon-search.png")no-repeat right 12px center;}
+.homelogoblockright .searchboxblock input[type="search"]{color: #3f3d3d;font-family: "RalewaySemiBold"; font-size:18px; text-transform: uppercase; background-color: #fff; display: inline-block; padding: 10px 12px; margin-bottom: 0; text-align: left; border-radius: 0px;border: 1px solid #ccc; width:100%;background: url("../images/icon-search.png")no-repeat right 12px center;}
 .homelogoblockright{padding-top: 26px; padding-bottom: 26px;}
 .homelogoblockright .carticon img{margin-right: 12px;}
 .homelogoblockright .carticon a{ text-decoration: none; color:#3f3d3d}
@@ -278,7 +290,7 @@ a,a:hover{cursor:pointer;}
 .hometopnavblock .navbar-default .navbar-nav>.active>a:hover {background-color: #89b11d; color: #3f3d3d; font-family: "EngraversGothicW01Bold"; font-size:24px;}
 .hometopnavblock .navbar-default .navbar-nav> li:hover {background-color: #89b11d; color: #3f3d3d; font-family: "EngraversGothicW01Bold"; font-size:24px;}
 .hometopnavblock .navbar-default .navbar-nav {margin: 0px; text-align: center;}
-.hometopnavblock .navbar-default .nav>li>a {padding: 14px 45px;color: #3f3d3d;font-family: "EngraversGothicW01Bold";}
+.hometopnavblock .navbar-default .nav>li>a {padding: 14px 42px;color: #3f3d3d;font-family: "EngraversGothicW01Bold";}
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover{
     background-color: #496207 !important;
@@ -344,11 +356,37 @@ a,a:hover{cursor:pointer;}
     -o-transform: skew(43.5deg, 0deg);
     transform: skew(43.5deg, 0deg);
 }
-.carousel-caption{
-    margin-top: 430px;
-    margin-left: 925px !important;
-    width: 682px;
+
+.carousel-caption {
+    right: 20%;
+    left: 9% !important;
+    padding-bottom: 30px;
 }
+
+
+.bannerwrapper .item:nth-child(1) .carousel-caption {
+    margin-top: 264px;
+    margin-left: 1158px !important;
+    width: 524px;
+}
+
+.bannerwrapper .item:nth-child(2) .carousel-caption {
+    margin-top: 225px;
+    margin-left: 1170px !important;
+    width: 524px;
+}
+
+.bannerwrapper .item:nth-child(3) .carousel-caption {
+    margin-top: 180px;
+    margin-left: 1115px !important;
+    width: 524px;
+}
+.bannerwrapper .item:nth-child(4) .carousel-caption {
+    margin-top: 170px;
+    margin-left: 1075px !important;
+    width: 524px;
+}
+
 
 .carousel-caption h3 span.spanlrgtxt {
     color: #363636;
@@ -364,7 +402,57 @@ a,a:hover{cursor:pointer;}
     display: inline-block;
 }
 
+.captionwrapperinner .carousel-caption h4 {
+    font-size: 50px;
+    color: #363636;
+    font-family: "RalewayBold";
+    text-transform: uppercase;
+    text-shadow: none;
+    text-align: center;
+    line-height: normal;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    word-spacing: 0px;
+    font-weight: 600;
+}
+.captionwrapperinner .carousel-caption h4 .spantxt{
+   color:#d92b8a;
+}
+
 .carousel-caption h3 {
+    font-size: 45px;
+    color: #d92b8a;
+    font-family: "RalewayBold";
+    text-transform: uppercase;
+    text-shadow: none;
+    text-align: center;
+    line-height: 48px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    word-spacing: 0px;
+    font-weight: 600;
+}
+
+.carousel-caption h5 {
+    font-size: 30px;
+    color: #2a2a2a;
+    font-family: "RalewayBold";
+    text-transform: uppercase;
+    text-shadow: none;
+    text-align: center;
+    line-height: normal;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    word-spacing: 0px;
+    font-weight: 600;
+}
+
+
+
+/*.carousel-caption h3 {
     font-size: 60px;
     color: #363636;
     font-family: "RalewayBold";
@@ -386,7 +474,7 @@ a,a:hover{cursor:pointer;}
 
 .carousel-caption h3 span.spantxt{
     text-transform: lowercase !important;
-}
+}*/
 
 #myCarousel .carousel-inner .item .btnblack {
     padding-left:36px;
@@ -418,6 +506,32 @@ a,a:hover{cursor:pointer;}
 }
 
 .btnblackbanner:hover{color:#fff !important;}
+
+
+.btn-default.btnwhite,
+.btn-default.btnwhite:hover,
+.btn-default.focus.btnwhite,
+.btn-default.btnwhite:focus{
+    padding-left: 43px !important;
+    padding-right: 43px !important;
+    color: #fff !important;
+    font-family: "RalewayExtraBold" !important;
+    font-size: 16px !important;
+    padding-top: 12px !important;
+    border: none !important;
+    padding-bottom: 11px !important;
+    background-color: transparent !important;
+    border: 2px solid #fff !important;
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -o-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -moz-border-radius: 0px;
+    text-transform: uppercase !important;
+}
+.btn-default.btnwhite:hover{color:#000 !important;}
+
+
 
 
 .btn-default.btnblack,
@@ -593,11 +707,18 @@ a,a:hover{cursor:pointer;}
 
 /*----homeblock14 css----*/
 
-.homeblock14{
+/*.homeblock14{
     padding-top: 0px;
     padding-bottom: 30px;
     background: url(../images/homeblock14leftimgbg.png) no-repeat left bottom #fff;
+}*/
+
+.homeblock14{
+    padding-top: 0px;
+    padding-bottom: 30px;
+    background:#fff;
 }
+
 .homeblock14 .homeblock14wrapper {
     width: 1608px;
     margin: 0 auto;
@@ -669,17 +790,35 @@ a,a:hover{cursor:pointer;}
 .homeblock1single{width: 19%;display: inline-block;position: relative;text-align: left;margin: 0%;}
 .homeblock1single img{width: 100%;}
 .homeblock1content1{position: absolute; z-index: 99; bottom:0px; right:0px; width:237px; min-height: 98px;}
-.homeblock1content1 h2{color:#535353; font-family: "RobotoBlack"; font-size: 48px; text-transform: uppercase; margin: 0px;}
-.homeblock1content1part2{background-color: #1ac1ff; width:100%; min-height: 60px;}
-.homeblock1content1part2 h3{color: #002736; font-family: "Helvetica-Normal";
+.homeblock1content1 h2{font-family: "RobotoBlack"; font-size: 36px; text-transform: uppercase; margin: 0px;padding: 10px 15px;}
+.homeblock1content1part2{width:100%; min-height: 60px;}
+.homeblock1content1part2 h3{
+    font-family: "MyriadPro-Semibold";
     font-size: 18px;
     text-transform: uppercase;
-    padding: 13px 11px 7px 11px;
+    padding: 7px 15px 7px 15px;
     margin: 0px;
-    line-height: 23px;}
+    line-height: 23px;
+}
+
 .homeblock1content1part2 h3 span{color:#fff; display: block;}
 
 
+.homeblock1single:nth-child(1) .homeblock1content1 h2{background-color: #ff5400; width:100%; color:#fff;}
+.homeblock1single:nth-child(1) .homeblock1content1 .homeblock1content1part2{background-color: #ffcf10; width:100%; color:#191818; min-height: 60px;}
+
+.homeblock1single:nth-child(2) .homeblock1content1 h2{background-color: #60ff00; width:100%; color:#201f1f;}
+.homeblock1single:nth-child(2) .homeblock1content1 .homeblock1content1part2{background-color: #00aa18; width:100%; color:#fff; min-height: 60px;}
+
+.homeblock1single:nth-child(3) .homeblock1content1 h2{background-color: #8e00ff; width:100%; color:#fff;}
+.homeblock1single:nth-child(3) .homeblock1content1 .homeblock1content1part2{background-color: #f9f005; width:100%; color:#1a1a1a; min-height: 60px;}
+
+.homeblock1single:nth-child(4) .homeblock1content1 h2{background-color: #ff0094; width:100%; color:#fff;}
+.homeblock1single:nth-child(4) .homeblock1content1 .homeblock1content1part2{background-color: #60ff00; width:100%; color:#151515; min-height: 60px;}
+
+
+
+/*
 .homeblock1content2{position: absolute; z-index: 99; left:0px; top:0px; width:100%; height: 100%;}
 .homeblock1content2 h2 {color: #fff; width: 155px; font-family: "RobotoBlack"; font-size: 30px; text-transform: uppercase; margin: 0px;  background-color: #dc1c1c; padding: 6px 10px 8px 10px;}
 .homeblock1content2part2 {width: 150px; min-height: 60px;position: absolute; bottom: 0px;}
@@ -735,7 +874,7 @@ a,a:hover{cursor:pointer;}
     padding: 13px 11px 7px 11px;
     margin: 0px;
     line-height: 23px;}
-.homeblock1content5part5 h3 span{display: block;}
+.homeblock1content5part5 h3 span{display: block;}*/
 
 
 
@@ -882,7 +1021,7 @@ a,a:hover{cursor:pointer;}
     display:inline-block !important;
 }
 .homeblock3bgcontentrightcontent h2{
-    color: #212121;
+    color: #fff;
     font-family: "RalewayBold";
     font-size: 40px;
     line-height: 40px;
@@ -909,7 +1048,7 @@ a,a:hover{cursor:pointer;}
 }
 
 .homeblock3bgcontentrightcontent p{
-    color: #272727;
+    color: #fff;
     font-family: "RalewayRegular";
     font-size: 18px;
     margin: 0;
@@ -956,7 +1095,7 @@ a,a:hover{cursor:pointer;}
     top: 0px !important;
     left: -264px;
     height: 510px !important;
-    background: #60ff00 !important;
+    background: #4eb212 !important;
     padding: 20px !important;
     -ms-transform: skew(33deg, 0deg) !important;
     /* IE 9 */
@@ -974,7 +1113,7 @@ a,a:hover{cursor:pointer;}
     text-align: right;
 }
 .homeblock4bgcontentrightcontent h2{
-    color: #212121;
+    color: #fff;
     font-family: "RalewayBold";
     font-size: 40px;
     line-height: 40px;
@@ -993,7 +1132,7 @@ a,a:hover{cursor:pointer;}
 }
 
 .homeblock4bgcontentrightcontent h4 {
-    color: #212121;
+    color: #fff;
     font-family: "HelveticaNormal";
     font-size: 24px;
     margin: 0;
@@ -1001,7 +1140,7 @@ a,a:hover{cursor:pointer;}
 }
 
 .homeblock4bgcontentrightcontent p{
-    color: #272727;
+    color: #fff;
     font-family: "RalewayRegular";
     font-size: 18px;
     margin: 0;
@@ -1057,7 +1196,7 @@ a,a:hover{cursor:pointer;}
     top: 0px !important;
     right: -264px;
     height: 510px !important;
-    background: #8e00ff !important;
+    background: #8037bb !important;
     padding: 20px !important;
     -ms-transform: skew(33deg, 0deg) !important;
     /* IE 9 */
@@ -1073,7 +1212,7 @@ a,a:hover{cursor:pointer;}
     display:inline-block !important;
 }
 .homeblock5bgcontentrightcontent h2{
-    color: #212121;
+    color: #fff;
     font-family: "RalewayBold";
     font-size: 40px;
     line-height: 40px;
@@ -1100,7 +1239,7 @@ a,a:hover{cursor:pointer;}
 }
 
 .homeblock5bgcontentrightcontent p{
-    color: #272727;
+    color: #fff;
     font-family: "RalewayRegular";
     font-size: 17px;
     margin: 0;
@@ -1147,7 +1286,7 @@ a,a:hover{cursor:pointer;}
     top: 0px !important;
     left: -264px;
     height: 510px !important;
-    background: #ff0094 !important;
+    background: #fa23a0 !important;
     padding: 20px !important;
     -ms-transform: skew(33deg, 0deg) !important;
     /* IE 9 */
@@ -1165,7 +1304,7 @@ a,a:hover{cursor:pointer;}
     text-align: right;
 }
 .homeblock6bgcontentrightcontent h2{
-    color: #212121;
+    color: #fff;
     font-family: "RalewayBold";
     font-size: 40px;
     line-height: 40px;
@@ -1192,7 +1331,7 @@ a,a:hover{cursor:pointer;}
 }
 
 .homeblock6bgcontentrightcontent p{
-    color: #272727;
+    color: #fff;
     font-family: "RalewayRegular";
     font-size: 18px;
     margin: 0;
@@ -2733,19 +2872,6 @@ a,a:hover{cursor:pointer;}
 
 }
 
-.checkoutfromblock .form-inline .form-group2{
-    margin-right: 0% !important;
-    margin-bottom: 10px !important;
-    float:right !important;
-}
-
-.checkoutfromblock .form-inline .form-group1{
-    margin-left: 0% !important;
-    margin-bottom: 10px !important;
-    float:left !important;
-
-}
-
 
 .singlecolumn{
     width: 100% !important;
@@ -3220,20 +3346,30 @@ img.payment-icon {
 }
 
 .homeblock3 .footertitlebottomline {
-    background: #afcb08 !important;
+    background: #ff5400 !important;
 }
 
 .homeblock4 .footertitlebottomline {
-    background: #ff7510 !important;
+    background: #4eb212 !important;
+}
+
+.homeblock5 .footertitlebottomline {
+    background: #8037bb !important;
 }
 
 .homeblock6 .footertitlebottomline {
-    background: #f3c409 !important;
+    background: #fa23a0 !important;
 }
 
 .homeblock7 .footertitlebottomline {
     background: #32cbfd !important;
 }
+.homeblock3bgimgwrapper {
+    float: left;
+    text-align: left;
+    margin-left: -140px;
+}
+
 
 
 /*--------------.aboutusblock-------------*/
@@ -7128,3 +7264,7 @@ input.login_box_input:-moz-placeholder { /* Firefox 18- */
 
 .myToolTip{width:280px; height: 40px; display: inline-block;}
 .myToolTip img{max-width: 100% !Important; width:24px; height: 24px; }
+
+
+
+

@@ -19,7 +19,7 @@ global $AI;
             <div class="homeblock8contentinput">
                 <input type="text" placeholder="Enter your email to join our newsletter">
             </div>
-            <a href="javascript:void(0)" class="btn btn-default btngreen">Buy now</a>
+            <a href="javascript:void(0)" class="btn btn-default btngreen">Subscribe</a>
         </div>
     </div>
 </div>
@@ -52,6 +52,8 @@ global $AI;
                         <li><a href="/">Home</a></li>
                         <li><a href="/programs">Programs</a></li>
                         <li><a href="/vivacity-products">Shop</a></li>
+                        <!--<li><a href="javascript:void(0)">Incentives</a></li>-->
+                        <li><a href="/cannabinoides">Cannabinoides</a></li>
                         <li><a href="javascript:void(0)">Incentives</a></li>
                         <li><a href="/vivacity-products-lists">Products</a></li>
                         <li><a href="/aboutus">Aboutus</a></li>

@@ -30,7 +30,47 @@ $o_res = db_query("SELECT `p`.`product_id`,`p`.`title` FROM `products` `p` INNER
 
 
 
+$name=getpropername($product_details['title']);
+$id=$product_details['product_id'];
+$file="system/themes/vivacity_frontend/images/defaultproduct.png";
+if($product_details['img_url']!=''){
+    $file=$product_details['img_url'];
+}
+
+//$description=$AI->get_defaulted_dynamic_area($product_details['description'],'');
+$description=strip_tags($AI->get_defaulted_dynamic_area($product_details['description'],''));
+
+$url11="https://plus.google.com/share?url=".urlencode('http://'.strtolower($AI->user->username).'.vivacitygo.com/product-info/'.$product_details['product_id'].'/'.getpropername($product_details['title']))."?ai_bypass=true";
+//$url11="https://plus.google.com/share?url=https://www.vivacity.com/?ai_bypass=true";
+//echo db_num_rows($resblogorderbypriority);
+
+
+$pinteresturl22= "http://pinterest.com/pin/create/button/?url=http://". strtolower($AI->user->username).".vivacitygo.com/product-info/".$product_details['product_id']."/".getpropername($product_details['title'])."&media=http://www.vivacitygo.com/".$file."&description=";
+function getpropername($title=''){
+    $pro_url_title = strtolower(trim($title));
+    $pro_url_title = preg_replace("/[^a-z0-9_\s-]/", "", $pro_url_title);
+    $pro_url_title = preg_replace("/[\s-]+/", " ", $pro_url_title);
+    $pro_url_title = preg_replace("/[\s_]/", "-", $pro_url_title);
+    return $pro_url_title;
+}
 ?>
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : 207221293015249,
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+    };</script>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 
 <div class="container-fluid innerpageprodtitleblock text-center">
@@ -74,11 +114,11 @@ $o_res = db_query("SELECT `p`.`product_id`,`p`.`title` FROM `products` `p` INNER
             <div class="col-lg-9 col-md-9 col-sm-12 col-sm-12">
                 <div class="viproductlistsinfo">
                     <h3 class="<?php echo $product_cls2_arr[$product_id];?>"><?php echo $product_details['title'];?></h3>
-                    <p><?php echo $AI->get_defaulted_dynamic_area($product_details['description']);?></p>
+                    <p><?php echo $AI->get_defaulted_dynamic_area($product_details['description'],'');?></p>
                     <p class="viproductlistsinfoinner">
                         <span class="titlespan <?php echo $product_cls2_arr[$product_id];?>">Product Ingredients:</span>
 
-                        <?php echo $AI->get_defaulted_dynamic_area($product_details['ingredients']);?>
+                        <?php echo $AI->get_defaulted_dynamic_area($product_details['ingredients'],'');?>
                     </p>
                     <p><a class="btn btn-default btnbuynowlink" href="/product-details/<?php echo $product_details['product_id'];?>/<?php echo $pro_url_title;?>">Buy Now</a></p>
                     <p class="titlespaninfosmltxt">*These statements have not been evaluated by the Food & Drug Administration. This product is not intended to diagnose, treat,, cure or prevent any disease. </p>
@@ -87,35 +127,36 @@ $o_res = db_query("SELECT `p`.`product_id`,`p`.`title` FROM `products` `p` INNER
             <div class="col-lg-3 col-md-3 col-sm-12 col-sm-12">
                 <div class="viproductlistsinfo">
                     <h3 class="<?php echo $product_cls2_arr[$product_id];?>">Benefits</h3>
-                    <?php echo $AI->get_defaulted_dynamic_area($product_details['benefits']);?>
+                    <?php echo $AI->get_defaulted_dynamic_area($product_details['benefits'],'');?>
                     <div class="clearfix"></div>
                     <div class="videoblock1rightblock3">
                         <ul class="list-inline">
                             <li>
-                                <a href="javascript:void(0)">
+                                <a postid="<?php echo $id ?>" posttitle="<?php echo $name ?>" postdescription="<?php echo $description ?>" postimage="<?php echo $file ?>" onclick="facebookshareproductinfo(this)" href="javascript:void(0)" >
                                     <img src="system/themes/vivacity_frontend/images/iconfbvideo.png">
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">
+                                <a target="_blank" href="<?php echo $pinteresturl22 ?>">
                                     <img src="system/themes/vivacity_frontend/images/iconpintvideo.png">
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">
+                                <a href="https://twitter.com/intent/tweet?original_referer=http://<?php echo strtolower($AI->user->username);?>.vivacitygo.com/product-info/<?php echo $product_details['product_id']?>/<?php echo getpropername($product_details['title'])?>&text=<?php echo strip_tags($product_details['title'])?>&tw_p=tweetbutton&url=http://<?php echo strtolower($AI->user->username);?>.vivacitygo.com/product-info/<?php echo $product_details['product_id']?>/<?php echo getpropername($product_details['title'])?>&via=vivacitygo
+" target="_blank">
                                     <img src="system/themes/vivacity_frontend/images/icontwvideo.png">
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">
+                                <a target="_blank" href="<?php echo $url11?>">
                                     <img src="system/themes/vivacity_frontend/images/icongplusvideo.png">
                                 </a>
                             </li>
-                            <li>
+                           <!-- <li>
                                 <a href="javascript:void(0)">
                                     <img src="system/themes/vivacity_frontend/images/iconblogvideo.png">
                                 </a>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                 </div>

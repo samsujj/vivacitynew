@@ -19,7 +19,9 @@ foreach ( $cart->contents as $stock_id => $cart_data )
     $cart_products[] = $stock_id;
 }
 
-$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE (`pf`.`folderID`=12 OR `pf`.`folderID`=11) AND `ps`.`stock_item_id` NOT IN (".implode(',',$cart_products).") GROUP BY `ps`.`product_id`");
+//$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE (`pf`.`folderID`=12 OR `pf`.`folderID`=11) AND `ps`.`stock_item_id` NOT IN (".implode(',',$cart_products).") GROUP BY `ps`.`product_id`");
+
+$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE (`pf`.`folderID`=12 OR `pf`.`folderID`=11) GROUP BY `ps`.`product_id`");
 
 $p_count = db_num_rows($p_res);
 $noofslider = ($p_count/4);
@@ -31,6 +33,111 @@ if($noofslider > $noofsliderint){
 
 
 ?>
+
+<style>
+    .multi-item-carousel{
+    .carousel-inner{
+    > .item{
+          transition: 500ms ease-in-out left;
+      }
+    .active{
+    &.left{
+         left:-33%;
+     }
+    &.right{
+         left:33%;
+     }
+    }
+    .next{
+        left: 33%;
+    }
+    .prev{
+        left: -33%;
+    }
+    @media all and (transform-3d), (-webkit-transform-3d) {
+    > .item{
+    // use your favourite prefixer here
+    transition: 500ms ease-in-out left;
+        transition: 500ms ease-in-out all;
+        backface-visibility: visible;
+        transform: none!important;
+    }
+    }
+    }
+    .carouse-control{
+    &.left, &.right{
+                 background-image: none;
+             }
+    }
+    }
+
+
+</style>
+
+<script>
+    $(function () {
+        // Instantiate the Bootstrap carousel
+        $('.multi-item-carousel').carousel({
+            interval: false
+        });
+
+        showmulticarousel();
+
+
+
+    });
+
+    function showmulticarousel(){
+        var winwidth = $(window).width();
+
+        if(winwidth > 1240){
+            $('.multi-item-carousel .item').each(function(){
+                var next = $(this).next();
+
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+
+                /*if (next.next().length>0) {
+                    next.next().children(':first-child').clone().appendTo($(this));
+                } else {
+                    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                }*/
+            });
+        }else if(winwidth > 992){
+            $('.multi-item-carousel .item').each(function(){
+                var next = $(this).next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+
+                if (next.next().length>0) {
+                    next.next().children(':first-child').clone().appendTo($(this));
+                } else {
+                    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                }
+            });
+        }else if(winwidth > 640){
+            $('.multi-item-carousel .item').each(function(){
+                var next = $(this).next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+
+                /*if (next.next().length>0) {
+                    next.next().children(':first-child').clone().appendTo($(this));
+                } else {
+                    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                }*/
+            });
+        }
+
+    }
+
+</script>
 
 <div class="container-fluid innerpagetitleblock text-center">
     <div class="innerpagetitleblockwrapper">
@@ -44,7 +151,7 @@ if($noofslider > $noofsliderint){
             <?php if(intval($cart->count())) { ?>
                 <div class="row">
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 spblock1prodcartleft">
-                        <div class="shopcartlist">
+                        <div class="shopcartlist" id="cartproductlistt">
                             <!--                       <div class="row row-eq-height shopcartsinglelist">
                                                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 shopcartsinglelistleft">
                                                            <div class="spcartimgwarpper">
@@ -74,6 +181,12 @@ if($noofslider > $noofsliderint){
                                 $product = C_product::get_new_product_from_stock($stock_id);
                                 $stock = $product->get_stock($stock_id);
 
+                                $pid =  $product->db->product['product_id'];
+                                $ptitle =  $product->db->product['title'];
+                                $ptitle1 = strtolower($ptitle);
+                                $ptitle1 = preg_replace("/[^a-z0-9_\s-]/", "", $ptitle1);
+                                $ptitle1 = preg_replace("/[\s-]+/", " ", $ptitle1);
+                                $ptitle1 = preg_replace("/[\s_]/", "-", $ptitle1);
 
                                 $imgpath = $product->db->product['img_url'];
 
@@ -86,18 +199,17 @@ if($noofslider > $noofsliderint){
                                 <div class="row row-eq-height shopcartsinglelist">
                                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 shopcartsinglelistleft">
                                         <div class="spcartimgwarpper">
-                                            <img src="<?php echo $imgpath?>">
+                                            <a href="product-details/<?php echo $pid;?>/<?php echo $ptitle1;?>"><img src="<?php echo $imgpath?>"></a>
                                         </div>
                                     </div>
                                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 shopcartsinglelistright">
                                         <div class="spblock1prodcartcontent">
-                                            <h1><?php echo h($product->get_title());?></h1>
+                                            <h1><a href="product-details/<?php echo $pid;?>/<?php echo $ptitle1;?>"><?php echo h($product->get_title());?></a></h1>
                                             <span class="btnpink">Price : $ <?php echo h(number_format($stock->get_price(), 2)); ?></span>
                                             <h4>
                                                 <span>Quantity</span>
                                                 <div class="plusminusdiv">
                                                     <a href="javascript:void(0)" onclick="quanDec(<?php echo $stock_id;?>)"><span>-</span></a> <input type="text" class="form-control" value="<?php echo h(intval($cart_data['qty'])); ?>" id="quanvalue<?php echo $stock_id;?>"> <a href="javascript:void(0)" onclick="quanInc(<?php echo $stock_id;?>)"><span>+</span></a>
-                                                    <a href="javascript:void(0)" onclick="updateQuan(<?php echo $stock_id;?>)">Update</a>
                                                 </div>
                                                 <div class="instockdiv">IN Stock</div>
                                             </h4>
@@ -118,28 +230,28 @@ if($noofslider > $noofsliderint){
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 spblock1prodcartright">
                         <ul class="list-group">
                             <li class="list-group-item shopcartheader">
-                                Shopping SummAry
+                                Shopping Summary
                             </li>
                             <li class="list-group-item">
-                                <span class="qtyprice"><?php echo intval($cart->count())?></span>
+                                <span class="qtyprice" id="cartquan"><?php echo intval($cart->count())?></span>
                                 Quantity
                             </li>
                             <li class="list-group-item">
-                                <span class="qtyprice">$ <?php echo h(number_format($cart->get_sub_total(), 2)); ?></span>
+                                <span class="qtyprice" id="cartsubtotal">$ <?php echo h(number_format($cart->get_sub_total(), 2)); ?></span>
                                 Product Total
                             </li>
-                            <li class="list-group-item">
-                                <span class="qtyprice">$ <?php echo h(number_format($cart->shipping_rate, 2)); ?></span>
+                            <!--<li class="list-group-item">
+                                <span class="qtyprice">$ <?php //echo h(number_format($cart->shipping_rate, 2)); ?></span>
                                 Shipping
                             </li>
                             <li class="list-group-item">
-                                <span class="qtyprice">$ <?php echo h(number_format($cart->get_tax(), 2)); ?></span>
+                                <span class="qtyprice"><?php //echo h(number_format($cart->get_tax(), 2)); ?></span>
                                 Sales Tax
                             </li>
                             <li class="list-group-item">
-                                <span class="qtyprice">$ <?php echo h(number_format($cart->get_total(), 2)); ?></span>
+                                <span class="qtyprice"  id="carttotaltotal">$ <?php //echo h(number_format($cart->get_total(), 2)); ?></span>
                                 Total
-                            </li>
+                            </li>-->
                             <li class="list-group-item">
                                 <a class="btn btn-default btngreensc" href="/checkoutfrontend">Checkout</a> <a class="btn btn-default btngraysc pull-right" href="/vivacity-products">Continue Shopping</a>
                             </li>
@@ -482,4 +594,71 @@ if($p_count > 0){
 <?php
 }
 
+?>
+
+
+
+
+<?php/*
+if($p_count > 0) {
+    ?>
+    <div class="container-fluid spcartblock2">
+        <div class="shopcartwrapper">
+            <div class="row">
+                <div class="titleheader text-center">
+                    <h1>YOU MAY Also like</h1>
+                    <span class="footertitlebottomline"></span>
+                </div>
+            </div>
+
+            <div class="prodcartwrapper">
+                <div class="carousel slide multi-item-carousel" id="theCarousel">
+                    <div class="carousel-inner">
+                        <?php
+                        $i=1;
+                        while($p_res && $product = db_fetch_assoc($p_res)) {
+
+                        $img_path = $product['img_url'];
+
+                        if(!file_exists($img_path)){
+                            $img_path="system/themes/vivacity_frontend/images/defaultproduct.png";
+                        }
+
+                        $firstcls = '';
+                            if($i == 1){
+                                $firstcls = 'active';
+                            }
+
+                        ?>
+                            <div class="item <?php echo $firstcls?>">
+                                <div class="spblock2singleprod">
+                                    <div class="spblock1prodwrapper">
+                                        <img src="<?php echo $img_path;?>">
+                                    </div>
+                                    <h1><?php echo $product['title'];?></h1>
+                                    <span class="hr"></span>
+                                    <h3>$ <?php echo number_format($product['price'],2,'.','')?></h3>
+                                    <a class="btn btn-default btngreencart"  onclick="addtocart1('<?php echo $product['product_id'];?>',<?php echo $product['stock_item_id'];?>)">Add to Cart</a>
+                                </div>
+                            </div>
+                        <?php
+
+                            if($i == 2){
+                                break;
+                            }
+
+                            $i++;
+
+                        }   ?>
+                        <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <?php
+}*/
 ?>

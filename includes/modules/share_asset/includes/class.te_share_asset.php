@@ -134,15 +134,18 @@
 				$fname = $rand."_".$fname;
 				// chmod( $this->upload_dir . $fname, 0644 );
 
+
+
 				if($f->make_dir( $this->upload_dir ) && $f->save(  $this->upload_dir.$fname )) {
-					$AI->db->Update('share_asset', array( 'url' => $fname ), "id=" . (int)db_in( $this->te_key ) );
+					//$AI->db->Update('share_asset', array( 'url' => $fname ), "id=" . (int)db_in( $this->te_key ) );
+					$this->db['url'] = $this->upload_dir . $fname;
 				}
 				else {
 					$this->write_error_msg = "File not saved. " . $f->errorText;
 				}
 			}
 
-			if( isset( $_FILES['file_upload']['name'] ) && trim( $_FILES['file_upload']['name'] ) != '' )
+			/*if( isset( $_FILES['file_upload']['name'] ) && trim( $_FILES['file_upload']['name'] ) != '' )
 			{
 				$fname = util_cleanup_string( stripslashes($_FILES['file_upload']['name']), '_', 'abcedfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.' );
 				$fname = $rand."_".$fname;
@@ -151,7 +154,9 @@
 					$this->db['url'] = $this->upload_dir . $fname;
 					//$this->write_error_msg = 'That filename already exists, please rename your file before uploading.';
 				}
-			}
+			}*/
+
+			
 
 			// Automatically generate the sorting index
 			if( $this->te_mode == 'insert' || $this->te_mode == 'copy' ) {

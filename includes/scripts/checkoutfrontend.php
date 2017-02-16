@@ -88,7 +88,7 @@ if ( util_is_POST('order_submit') )
         $te_um->writable_db_field['parent'] = true;
         $te_um->db['username'] = $username;
         $te_um->db['password'] = $password;
-        $te_um->db['account_type'] = 'User';
+        $te_um->db['account_type'] = 'Customer';
         $te_um->db['parent'] = (int) util_rep_id();
         $te_um->admin_section_override = true;
         // Other Data
@@ -569,6 +569,66 @@ if ( util_is_POST('order_submit') )
 
 ?>
 
+<script>
+
+    $(function(){
+
+
+
+
+            var get_sub_total = '<?php echo h(number_format($cart->get_sub_total(), 2)); ?>';
+            var shipping_rate = '<?php echo h(number_format($cart->shipping_rate, 2)); ?>';
+            var get_tax = '<?php echo h(number_format($cart->get_tax(), 2)); ?>';
+            var get_total = '<?php echo h(number_format($cart->get_total(), 2)); ?>';
+
+        get_sub_total = parseFloat(get_sub_total);
+        shipping_rate = parseFloat(shipping_rate);
+        get_tax = parseFloat(get_tax);
+        get_total = parseFloat(get_total);
+
+
+
+        $('#bill_region').change(function(){
+            $.post('gettax1',{bill_first_name:$('#bill_first_name').val(),bill_last_name:$('#bill_last_name').val(),bill_address_line_1:$('#bill_address_line_1').val(),bill_city:$('#bill_city').val(),bill_region:$('#bill_region').val(),bill_country:$('#bill_country').val(),bill_postal_code:$('#bill_postal_code').val(),email:$('#bill_email').val(),phone:'',ship_first_name:$('#ship_first_name').val(),ship_last_name:$('#ship_last_name').val(),ship_address_line_1:$('#ship_address_line_1').val(),ship_city:$('#ship_city').val(),ship_region:$('#ship_region').val(),ship_country:$('#ship_country').val(),ship_postal_code:$('#ship_postal_code').val()},function(res){
+
+                get_tax = res;
+                get_tax = parseFloat(get_tax);
+                var get_total = get_sub_total+shipping_rate+get_tax;
+                $('#taxarea').text('$'+get_tax.toFixed(2));
+                $('#totalarea').text('$'+get_total.toFixed(2));
+
+            });
+        });
+
+        $('#ship_region').change(function(){
+            $.post('gettax1',{bill_first_name:$('#bill_first_name').val(),bill_last_name:$('#bill_last_name').val(),bill_address_line_1:$('#bill_address_line_1').val(),bill_city:$('#bill_city').val(),bill_region:$('#bill_region').val(),bill_country:$('#bill_country').val(),bill_postal_code:$('#bill_postal_code').val(),email:$('#bill_email').val(),phone:'',ship_first_name:$('#ship_first_name').val(),ship_last_name:$('#ship_last_name').val(),ship_address_line_1:$('#ship_address_line_1').val(),ship_city:$('#ship_city').val(),ship_region:$('#ship_region').val(),ship_country:$('#ship_country').val(),ship_postal_code:$('#ship_postal_code').val()},function(res){
+
+                get_tax = res;
+                get_tax = parseFloat(get_tax);
+                var get_total = get_sub_total+shipping_rate+get_tax;
+                $('#taxarea').text('$'+get_tax.toFixed(2));
+                $('#totalarea').text('$'+get_total.toFixed(2));
+
+            });
+        });
+
+        $('.blurarea').blur(function(){
+            $.post('gettax1',{bill_first_name:$('#bill_first_name').val(),bill_last_name:$('#bill_last_name').val(),bill_address_line_1:$('#bill_address_line_1').val(),bill_city:$('#bill_city').val(),bill_region:$('#bill_region').val(),bill_country:$('#bill_country').val(),bill_postal_code:$('#bill_postal_code').val(),email:$('#bill_email').val(),phone:'',ship_first_name:$('#ship_first_name').val(),ship_last_name:$('#ship_last_name').val(),ship_address_line_1:$('#ship_address_line_1').val(),ship_city:$('#ship_city').val(),ship_region:$('#ship_region').val(),ship_country:$('#ship_country').val(),ship_postal_code:$('#ship_postal_code').val()},function(res){
+
+                get_tax = res;
+                get_tax = parseFloat(get_tax);
+                var get_total = get_sub_total+shipping_rate+get_tax;
+                $('#taxarea').text('$'+get_tax.toFixed(2));
+                $('#totalarea').text('$'+get_total.toFixed(2));
+
+            });
+        });
+
+
+    })
+
+</script>
+
 <div class="container-fluid innerpagetitleblock text-center">
     <div class="innerpagetitleblockwrapper">
         <h1>Check out</h1>
@@ -598,9 +658,9 @@ if ( util_is_POST('order_submit') )
                             echo '<tr class="form-group"><th>Retype Password</th><td><input type="password" id="retype_password" class="span12" name="retype_password" value="" /></td></tr>';
                             echo '</tbody>';
                         } else {
-                            echo '<tbody id="checkout_account_create_info" class="checkout_account_create_info">';
+                            echo '<tbody id="checkout_account_create_info" class="checkout_account_create_info welcometextcenter">';
                             echo '<tr><th><h2>'.tt('Account').'</h2></th><td>';
-                            echo '<tr><th>&nbsp;</th><td><h2><span>'.tt('Welcome back').',</span> ' . h(get_checkout_name()) . '</h2></td></tr>';
+                            echo '<tr><th>&nbsp;</th><td><h2><span style="display:inline;">'.tt('Welcome back').',</span> ' . h(get_checkout_name()) . '</h2></td></tr>';
                             echo '</tbody>';
                         }
                         ?>
@@ -611,45 +671,64 @@ if ( util_is_POST('order_submit') )
                     <div class="form-group singlecolumn">
                         <h2>BILLING INFORMATION</h2>
                     </div>
-                    <div class="form-group">
+                   <div class="form-group">
                         <label for="firstname">First Name<span>*</span></label>
-                        <input type="text" id="bill_first_name" class="form-control" name="bill_first_name" value="<?php echo h(trim($billad['first_name'])); ?>" />
-                        <!---<span class="help-block errormsg">firstname is not valid</span>--->
+                        <input type="text" id="bill_first_name" class="form-control blurarea" name="bill_first_name" value="<?php /*echo h(trim(@$billad['first_name'])); */?>" />
+
                     </div>
-                    <div class="form-group">
-                        <label for="address">Address<span>*</span></label>
-                        <input type="text" id="bill_address_line_1" class="form-control" name="bill_address_line_1" value="<?php echo h($billad['address_line_1']); ?>" />
-                    </div>
+
                     <div class="form-group">
                         <label for="lastname">Last Name<span>*</span></label>
-                        <input type="text" id="bill_last_name" class="form-control" name="bill_last_name" value="<?php echo h(trim($billad['last_name'])); ?>" />
+                        <input type="text" id="bill_last_name" class="form-control blurarea" name="bill_last_name" value="<?php /*echo h(trim(@$billad['last_name'])); */?>" />
                     </div>
+
                     <div class="form-group">
-                        <label for="address2">Address Line 2<span>*</span></label>
-                        <input type="text" id="bill_address_line_2" class="form-control" name="bill_address_line_2" value="<?php echo h($billad['address_line_2']); ?>" />
+                        <label for="address">Address<span>*</span></label>
+                        <input type="text" id="bill_address_line_1" class="form-control blurarea" name="bill_address_line_1" value="<?php /*echo h(@$billad['address_line_1']); */?>" />
                     </div>
+
                     <div class="form-group">
-                        <label for="company">Company<span>*</span></label>
-                        <input type="text" id="bill_company" class="form-control" name="bill_company" value="<?php echo h(@$billad['company']); ?>" />
+                        <label for="address2">Address 2</label>
+                        <input type="text" id="bill_address_line_2" class="form-control" name="bill_address_line_2" value="<?php /*echo h(@$billad['address_line_2']); */?>" />
                     </div>
+
+
+                    <div class="clearfix"></div>
                     <div class="form-group">
                         <label for="city">City<span>*</span></label>
-                        <input type="text" id="bill_city" class="form-control" name="bill_city" value="<?php echo h($billad['city']); ?>" />
+                        <input type="text" id="bill_city" class="form-control blurarea" name="bill_city" value="<?php /*echo h(@$billad['city']); */?>" />
                     </div>
+
                     <div class="form-group">
-                        <label for="company">Email<span>*</span></label>
-                        <input type="text" id="bill_email" class="form-control" name="bill_email" value="<?php echo h($billad['email']); ?>" />
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 doublecolumn">
+
                             <label for="city">State<span>*</span></label>
-                            <?php echo get_region_input('bill_country', $billad['country'], 'bill_region', $billad['region']); ?>
+                            <?php echo get_region_input('bill_country', @$billad['country'], 'bill_region', @$billad['region']); ?>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 doublecolumn">
+
+
+                    <div class="form-group">
                             <label for="city">ZipCode<span>*</span></label>
-                            <input type="text" id="bill_postal_code" class="form-control" name="bill_postal_code" value="<?php echo h($billad['postal_code']); ?>" />
+                            <input type="text" id="bill_postal_code" class="form-control blurarea" name="bill_postal_code" value="<?php /*echo h(@$billad['postal_code']); */?>" />
                         </div>
+
+
+                    <div class="form-group">
+                            <label for="bill_phone">Phone <span>*</span></label>
+                            <input type="text"  class="form-control" name="bill_phone" id="bill_phone"  />
+                        </div>
+
+                    <div class="form-group">
+                        <label for="company">Billing Email<span>*</span></label>
+                        <input type="text" id="bill_email" class="form-control blurarea" name="bill_email" value="<?php /*echo h(@$billad['email']); */?>" />
                     </div>
+
+
+
+
+
+
+
+
                     <div class="hrline"></div>
 
                     <div class="form-group singlecolumn">
@@ -668,20 +747,20 @@ if ( util_is_POST('order_submit') )
 
                     <div class="form-group chk_ship_fld">
                         <label for="firstname">First Name<span>*</span></label>
-                        <input type="text" id="ship_first_name" class="form-control" name="ship_first_name" value="<?php echo h(trim($shipad['first_name'])); ?>" />
+                        <input type="text" id="ship_first_name" class="form-control blurarea" name="ship_first_name" value="<?php echo h(trim(@$shipad['first_name'])); ?>" />
                         <!---<span class="help-block errormsg">firstname is not valid</span>--->
                     </div>
                     <div class="form-group chk_ship_fld">
                         <label for="address">Address<span>*</span></label>
-                        <input type="text" id="ship_address_line_1" class="form-control" name="ship_address_line_1" value="<?php echo h($shipad['address_line_1']); ?>" />
+                        <input type="text" id="ship_address_line_1" class="form-control blurarea" name="ship_address_line_1" value="<?php echo h(@$shipad['address_line_1']); ?>" />
                     </div>
                     <div class="form-group chk_ship_fld">
                         <label for="lastname">Last Name<span>*</span></label>
-                        <input type="text" id="ship_last_name" class="form-control" name="ship_last_name" value="<?php echo h(trim($shipad['last_name'])); ?>" />
+                        <input type="text" id="ship_last_name" class="form-control blurarea" name="ship_last_name" value="<?php echo h(trim(@$shipad['last_name'])); ?>" />
                     </div>
                     <div class="form-group chk_ship_fld">
                         <label for="address2">Address Line 2<span>*</span></label>
-                        <input type="text" id="ship_address_line_2" class="form-control" name="ship_address_line_2" value="<?php echo h($shipad['address_line_2']); ?>" />
+                        <input type="text" id="ship_address_line_2" class="form-control" name="ship_address_line_2" value="<?php echo h(@$shipad['address_line_2']); ?>" />
                     </div>
                     <div class="form-group chk_ship_fld">
                         <label for="company">Company<span>*</span></label>
@@ -689,23 +768,109 @@ if ( util_is_POST('order_submit') )
                     </div>
                     <div class="form-group chk_ship_fld">
                         <label for="city">City<span>*</span></label>
-                        <input type="text" id="ship_city" class="form-control" name="ship_city" value="<?php echo h($shipad['city']); ?>" />
+                        <input type="text" id="ship_city" class="form-control blurarea" name="ship_city" value="<?php echo h(@$shipad['city']); ?>" />
                     </div>
                     <div class="form-group chk_ship_fld">
                         <label for="company">Email<span>*</span></label>
-                        <input type="text" id="ship_email" class="form-control" name="ship_email" value="<?php echo h($shipad['email']); ?>" />
+                        <input type="text" id="ship_email" class="form-control blurarea" name="ship_email" value="<?php echo h(@$shipad['email']); ?>" />
                     </div>
                     <div class="form-group chk_ship_fld">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 doublecolumn">
                             <label for="city">State<span>*</span></label>
-                            <?php echo get_region_input('ship_country', $shipad['country'], 'ship_region', $shipad['region']); ?>
+                            <?php echo get_region_input('ship_country', @$shipad['country'], 'ship_region', @$shipad['region']); ?>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 doublecolumn">
                             <label for="city">ZipCode<span>*</span></label>
-                            <input type="text" id="ship_postal_code" class="form-control" name="ship_postal_code" value="<?php echo h($shipad['postal_code']); ?>" />
+                            <input type="text" id="ship_postal_code" class="form-control blurarea" name="ship_postal_code" value="<?php echo h(@$shipad['postal_code']); ?>" />
                         </div>
                     </div>
+
+
+                    <!---Checkout page Review section start here----->
+
                     <div class="hrline"></div>
+                    <div class="form-group singlecolumn">
+                        <h2>REVIEW PURCHASE</h2>
+                    </div>
+
+                    <div class="form-group singlecolumn">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td>ITEM</td>
+                                    <td>Price</td>
+                                    <td>QUANTITY</td>
+                                    <td>Total</td>
+                                </tr>
+
+                                <?php
+
+                                foreach ( $cart->contents as $stock_id => $cart_data )
+                                {
+                                    $product = C_product::get_new_product_from_stock($stock_id);
+                                    $stock = $product->get_stock($stock_id);
+
+                                    ?>
+
+                                    <tr>
+                                        <td><?php echo h($product->get_title());?></td>
+                                        <td>$<?php echo h(number_format($stock->get_price(), 2)); ?></td>
+                                        <td><?php echo h(intval($cart_data['qty'])); ?></td>
+                                        <td>$<?php echo h(number_format($stock->get_price() * $cart_data['qty'], 2)); ?></td>
+                                    </tr>
+
+                                    <?php
+                                }
+                                ?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Sub-Total</td>
+                                    <td>$<?php echo h(number_format($cart->get_sub_total(), 2)); ?></td>
+                                </tr>
+
+
+                                <?php
+                                $res = db_query("SELECT * FROM `shipping_by_price` WHERE `min` <".$cart->get_sub_total()." && `max` >=".$cart->get_sub_total());
+                                //$ship_arr[$val] = 6;
+                                while($res && $row = db_fetch_assoc($res)) {
+                                    $ship_val = $row['cost'];
+                                }
+                                ?>
+
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Shipping</td>
+                                    <td>$<?php echo h(number_format($ship_val, 2)); ?></td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Tax</td>
+                                    <td id="taxarea">$<?php echo h(number_format($cart->get_tax(), 2)); ?></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>TOTAL</td>
+                                    <td id="totalarea">$<?php echo h(number_format($cart->get_total()+$ship_val, 2)); ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+                    <!---Checkout page Review section END here----->
+
+
+                    <div class="hrline"></div>
+
                     <div class="form-group singlecolumn">
                         <h2>PAYMENT INFORMATION</h2>
                         <!--<ul class="list-inline text-center paymentmode">
@@ -717,12 +882,12 @@ if ( util_is_POST('order_submit') )
                     </div>
                     <div class="form-group singlecolumn">
                         <div class="paymentmode">
-                            <?php echo get_cc_radio('card_type', $ccdata['card_type']);?>
+                            <?php echo get_cc_radio('card_type', @$ccdata['card_type']);?>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 tripplecolumn">
                             <label for="city">Card Name</label>
-                            <input type="text" id="card_name" class="span8" name="card_name" value="<?php echo h($ccdata['first_name'] . ' ' . $ccdata['last_name']); ?>" />
+                            <input type="text" id="card_name" class="span8" name="card_name" value="<?php echo h(@$ccdata['first_name'] . ' ' . @$ccdata['last_name']); ?>" />
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <label for="city">Card Number</label>
@@ -730,104 +895,19 @@ if ( util_is_POST('order_submit') )
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 cardexpiredblock">
                             <label for="city">Expiry Date</label>
-                            <?php echo get_cc_expire_input('card_exp_mo', 'card_exp_yr', $ccdata['card_exp_mo'], $ccdata['card_exp_yr']); ?>
+                            <?php echo get_cc_expire_input('card_exp_mo', 'card_exp_yr', @$ccdata['card_exp_mo'], @$ccdata['card_exp_yr']); ?>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 tripplecolumn">
                             <label for="city">CVV</label>
                             <input type="text" id="card_cvv" name="card_cvv"  class="span4" value="<?= ( isset($ccdata['card_cvv']) ? h($ccdata['card_cvv']) : '' ); ?>" maxlength="8" />
                         </div>
 
-                        <!--<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 doublecolumn">
-                            <label for="city">Card Number</label>
-                            <input type="text" class="form-control" placeholder="">
-                        </div>
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 singlecolumn">
-                                    <label for="city">Expiry Date</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 doublecolumninner">
-                                    <select class="selectoption">
-                                        <option>Select Month</option>
-                                        <option>Jan</option>
-                                        <option>Feb</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 doublecolumninner">
-                                    <select class="selectoption">
-                                        <option>Select Year</option>
-                                        <option>2017</option>
-                                        <option>2018</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 doublecolumn">
-                            <label for="city">CVV</label>
-                            <input type="text" class="form-control" placeholder="">
-                        </div>-->
                     </div>
-         <!---Checkout page Review section start here----->
-                    <!--<div class="hrline"></div>
-                    <div class="form-group singlecolumn">
-                        <h2>REVIEW PURCHASE</h2>
-                    </div>
-                    <div class="form-group singlecolumn">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tr>
-                                    <td>ITEM</td>
-                                    <td>Price</td>
-                                    <td>QUANTITY</td>
-                                    <td>Total</td>
-                                </tr>
-                                <tr>
-                                    <td>Item Description</td>
-                                    <td>$100</td>
-                                    <td>5</td>
-                                    <td>$500</td>
-                                </tr>
-                                <tr>
-                                    <td>Item Description</td>
-                                    <td>$100</td>
-                                    <td>5</td>
-                                    <td>$500</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Sub-Total</td>
-                                    <td>$0.00</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Shipping</td>
-                                    <td>$0.00</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Tax</td>
-                                    <td>$0.00</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>TOTAL</td>
-                                    <td>$0.00</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>-->
-          <!---Checkout page Review section END here----->
                     <div class="hrline"></div>
                     <div class="form-group singlecolumn">
                         <h2>TERMS & CONDITIONS</h2>
                     </div>
-                    <div class="form-group singlecolumn tctext">
+                    <div class="form-group singlecolumn tctext hide">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum lobortis metus vel vulputate. Maecenas imperdiet purus a velit egestas egestas. Nullam in velit vitae massa dapibus dignissim lacinia id urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id quam aliquet, porttitor magna at, mattis augue. Vestibulum pellentesque aliquet fermentum. Nulla facilisi. Pellentesque at fermentum metus. Integer pulvinar massa in ligula pulvinar, molestie mattis ligula gravida. Vivamus ut sem a nulla fringilla dictum ut eu tellus. Mauris non arcu facilisis, dignissim enim vitae, pellentesque sem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum lobortis metus vel vulputate. Maecenas imperdiet purus a velit egestas egestas. Nullam in velit vitae massa dapibus dignissim lacinia id urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id quam aliquet, porttitor magna at, mattis augue. Vestibulum pellentesque aliquet fermentum. Nulla facilisi. Pellentesque at fermentum metus. Integer pulvinar massa in ligula pulvinar, molestie mattis ligula gravida. Vivamus ut sem a nulla fringilla dictum ut eu tellus. Mauris non arcu facilisis, dignissim enim vitae, pellentesque sem.</p>
                     </div>
                     <div class="form-group singlecolumn">
@@ -835,14 +915,22 @@ if ( util_is_POST('order_submit') )
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" id="iagreetoit" name="iagreetoit" value="1" />
-                                    I agree to the terms & conditions
+                                    <span style="color:#000000;">I agree to the</span> <br/>
+                                    <ul class="list-inline text-center tnc" style="color:#000000;margin-top: 20px">
+
+                                        <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModaltermsf">Terms of Use</a></li>
+                                        <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModalrefundandreturnsf">Refunds and Returns</a></li>
+                                        <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModalPrivacyPolicyf">Privacy Policy</a></li>
+
+                                    </ul>
                                 </label>
                             </div>
                         </h5>
                     </div>
                     <div class="form-group singlecolumn">
                         <ul class="list-inline text-center btnform">
-                            <li><input class="btnblack" value="Submit Order" type="submit"></li>
+                            <!--<li><input class="btnblack" value="Submit Order" type="submit"></li>-->
+                            <li><a onclick="$('form').submit()" class="btnblack">Submit Order</a></li>
                             <li><a class="btnblack">Back to Cart</a></li>
                             <li><a class="btnblack">Continue Shopping</a></li>
                             <ul>

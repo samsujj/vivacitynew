@@ -20,5 +20,9 @@ if($AI->user->account_type == 'Distributor'){
 
 }
 
+if($AI->user->account_type == 'Customer'){
+    util_redirect('customer-dashboard');
+}
+
 ?>
 

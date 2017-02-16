@@ -8,7 +8,7 @@ $p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`fe
 
 <div class="container-fluid innerpagetitleblock text-center">
     <div class="innerpagetitleblockwrapper">
-        <h1>Shop Product</h1>
+        <h1>Shop Products</h1>
     </div>
 </div>
 
@@ -16,9 +16,11 @@ $p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`fe
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ribbonblock">
             <div class="ribbon">
-                <div class="ribbon-content"><h1><b>Heal - Renew - protect</b></h1></div>
+                <!--<div class="ribbon-content"><h1><b>Heal - Renew - protect</b></h1></div>-->
+                <div class="ribbon-content"><h1><b>Energize - Enhance - Inspire</b></h1></div>
             </div>
-            <h2>All our products are always responsibly sourced, ethically<br>created and never tested on animals</h2>
+            <h2>Set Your Intention, Choose a Product, Live The Results,<br>Upgrade to Your new vital life now!</h2>
+          <!--  <h2>All our products are always responsibly sourced, ethically<br>created and never tested on animals</h2>-->
             <!--products block-->
             <div class="spblock1prodcontent">
 

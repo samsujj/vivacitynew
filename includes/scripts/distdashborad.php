@@ -14,7 +14,6 @@ $userId = $AI->user->userID;
 $emailid = $AI->user->email;
 
 
-
 $res12 = db_query("SELECT * FROM `users` WHERE `userID` = ".$userId);
 
 while($res12 && $row12 = db_fetch_assoc($res12)) {
@@ -66,7 +65,7 @@ if($accept_term == 0) {
         db_query("UPDATE `users` SET `accept_term`=1 WHERE `userID` = " . $userId);
 
 
-        $email_name = 'Accept terms';
+        /*$email_name = 'Accept terms';
         $send_to = $emailid;
         $send_from = 'iftekarkta@gmail.com';
 
@@ -82,9 +81,9 @@ if($accept_term == 0) {
         $se->set_from($send_from);
         $se->set_defaults_array($defaults);
         $se->set_vars_array($vars);
-        $se->send($send_to);
+        $se->send($send_to);*/
 
-        util_redirect('dashboard');
+        util_redirect('membership-purchase');
 
     }
 
@@ -118,7 +117,7 @@ if($accept_term == 0) {
 </textarea>-->
 
             <div style="height: 500px; overflow: auto; border: 1px solid #c0c3c5; background: #ffffff; padding: 15px; font-size: 14px;">
-                December 1st, 2016<br><br>
+                <br><br>
                 <span style="color: #537518; font-weight: bold;">INTRODUCTION</span><br><br><br>
                 <div style="line-height: 30px;">Your participation as a Vivacity Promoter is very important to us, please take the time to review these terms since they affect you and how your Vivacity, a MAKEWAY Wellness Company, business may be run. If you have any questions or comments about these Policies and Procedures, please email customerservice@vivacitygo.com<br><br>
                 Policies and Procedures Incorporated into Promoter Agreement:<br><br>

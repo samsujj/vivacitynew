@@ -143,14 +143,11 @@ class C_order extends C_error_base
 	{
 		$this->cart_secondID = trim($secondID . '');
 	}
-
     // Run the entire order sequence in one method call
-
     public function run_order($bp, $source = '', $scheduled_purchase_id = 0, $owner_id=0, $set_assoc=null)
     {
         //SAVE THE BILLING PROFILE
         $bp->save();
-
         $this->olog("run_order(bp,$source,sched=$scheduled_purchase_id,owner=$owner_id)",$bp);
         // LOCK
         $lock = $this->get_lock($bp);

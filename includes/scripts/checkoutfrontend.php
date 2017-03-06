@@ -7,8 +7,9 @@ require_once ai_cascadepath('includes/modules/store/checkout/functions.php');
 global $AI;
 
 $checkout_userID = get_checkout_userID();
-$cart = new C_cart($checkout_userID, true, store_get_base_url(AI_DEFAULT_STORE_URL, 'iso'));
 
+$cart = new C_cart($checkout_userID, true, store_get_base_url(AI_DEFAULT_STORE_URL, 'iso'));
+//var_dump($cart);
 if($cart->get_num_items() == 0){
     util_redirect_abs('shopping-cart-1');
 }
@@ -370,15 +371,23 @@ if ( util_is_POST('order_submit') )
             $bp = new C_billing_profiles($current_userID, false, $profile_type);
             $bp_profile_id = $bp->get_profile_id();
 
+            $ship_val = 0;
 
+            $res = db_query("SELECT * FROM `shipping_by_price` WHERE `min` <".$cart->get_sub_total()." && `max` >=".$cart->get_sub_total());
+            //$ship_arr[$val] = 6;
+            while($res && $row = db_fetch_assoc($res)) {
+                $ship_val = $row['cost'];
+            }
+
+            $cart->set_shipping_rate(number_format($ship_val, 2));
             //shipping validation
-            $shipping_module = null;
-            shipping_instantiate_module($shipping_module);
+           // $shipping_module = null;
+           /* shipping_instantiate_module($shipping_module);
 
             if(method_exists($shipping_module,'get_shipping_rate'))
             {
                 $shipping_rate = $cart->set_shipping_rate($shipping_module->get_shipping_rate($cart));
-            }
+            }*/
 
 
 ////////////////////////////////////////////////////////////////
@@ -735,7 +744,7 @@ if ( util_is_POST('order_submit') )
                         <h5 class="text-center">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" id="checkout_billing_shipping_same" class="" name="bill_same_as_ship" value="1" checked="checked" />
+                                    <input type="checkbox" id="checkout_billing_shipping_same" class="" name="bill_same_as_ship" value="1" />
                                     My billing and shipping address are the same
                                 </label>
                             </div>
@@ -831,11 +840,16 @@ if ( util_is_POST('order_submit') )
 
 
                                 <?php
+                                $ship_val = 0;
+
                                 $res = db_query("SELECT * FROM `shipping_by_price` WHERE `min` <".$cart->get_sub_total()." && `max` >=".$cart->get_sub_total());
                                 //$ship_arr[$val] = 6;
                                 while($res && $row = db_fetch_assoc($res)) {
-                                    $ship_val = $row['cost'];
+                                     $ship_val = $row['cost'];
                                 }
+
+                                $cart->set_shipping_rate(number_format($ship_val, 2));
+
                                 ?>
 
 
@@ -843,7 +857,7 @@ if ( util_is_POST('order_submit') )
                                     <td></td>
                                     <td></td>
                                     <td>Shipping</td>
-                                    <td>$<?php echo h(number_format($ship_val, 2)); ?></td>
+                                    <td>$<?php echo h(number_format($cart->shipping_rate, 2)); ?></td>
                                 </tr>
 
 
@@ -858,7 +872,7 @@ if ( util_is_POST('order_submit') )
                                     <td></td>
                                     <td></td>
                                     <td>TOTAL</td>
-                                    <td id="totalarea">$<?php echo h(number_format($cart->get_total()+$ship_val, 2)); ?></td>
+                                    <td id="totalarea">$<?php echo h(number_format($cart->get_total(), 2)); ?></td>
                                 </tr>
                             </table>
                         </div>

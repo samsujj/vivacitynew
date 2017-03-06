@@ -32,7 +32,7 @@
 
 		<h3><?=$this->db['name']?></h3>
 
-		<img src="http://www.epiclyfe.com/image?imgurl=<?=$this->db['url']?>&w=<?=$this->db['width']?>&h=<?=$this->db['height']?>&ar=1&e=0&cr=0" style="border: solid 1px #ccc; display:block; margin:0 auto; max-width: 200px; max-height: 200px;" />	</div>
+		<img src="http://www.vivacitygo.com/image?imgurl=<?=$this->db['url']?>&w=<?=$this->db['width']?>&h=<?=$this->db['height']?>&ar=1&e=0&cr=0" style="border: solid 1px #ccc; display:block; margin:0 auto; max-width: 200px; max-height: 200px;" />	</div>
 
 	</div>
 

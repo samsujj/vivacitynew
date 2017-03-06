@@ -58,6 +58,7 @@
 	//-->
 </script>
 
+<div class="sharelinkmainwrapper">
 <div class="te_edit share_links_edit">
 	<form id="pdf_manager_form" enctype="multipart/form-data" class="te" method="post" action="<?php echo htmlspecialchars($postURL); ?>" onsubmit="return check_share_asset_form( this );" >
 		<fieldset class="te">
@@ -116,16 +117,16 @@
 			</dl>
 
 			<div class="te_buttons">
-			<input class="te te_buttons save_button" type="submit" name="btnSave" value="Save" style="background: #01a1fc none repeat scroll 0 0 !important; border: medium none !important; border-radius: 0 !important; box-shadow: none !important; color: #ffffff !important; display: block !important; float: left !important; font-size: 14px !important; height: 36px !important; line-height: 36px !important; margin: 0 5px !important; text-align: center !important; width: 126px !important;" />
+			<input class="te te_buttons save_button" type="submit" name="btnSave" value="Save" />
 			<?php
 				if( $this->is_valid_key( $this->te_key ) && $this->_default_mode_after_save != '' && $this->te_permit[ $this->_default_mode_after_save ] )
 				{
-					?><input class="te te_buttons cancle_button" type="button" name="btnCancel" value="Cancel" style="background: #01a1fc none repeat scroll 0 0 !important; border: medium none !important; border-radius: 0 !important; box-shadow: none !important; color: #ffffff !important; display: block !important; float: left !important; font-size: 14px !important; height: 36px !important; line-height: 36px !important; margin: 0 5px !important; text-align: center !important; width: 126px !important;" onclick="document.location='<?php echo htmlspecialchars($this->url( 'te_mode=' . $this->_default_mode_after_save . '&te_key=' . $this->te_key )); ?>';" /><?php
+					?><input class="te te_buttons cancle_button" type="button" name="btnCancel" value="Cancel" onclick="document.location='<?php echo htmlspecialchars($this->url( 'te_mode=' . $this->_default_mode_after_save . '&te_key=' . $this->te_key )); ?>';" /><?php
 				}
 				elseif( $this->te_permit[ $this->_te_modeDefault ] )
 
 				{
-					?><input class="te te_buttons cancle_button" type="button" name="btnCancel" value="Cancel" style="background: #01a1fc none repeat scroll 0 0 !important; border: medium none !important; border-radius: 0 !important; box-shadow: none !important; color: #ffffff !important; display: block !important; float: left !important; font-size: 14px !important; height: 36px !important; line-height: 36px !important; margin: 0 5px !important; text-align: center !important; width: 126px !important;" onclick="document.location='<?php echo htmlspecialchars($this->url( 'te_mode=' . $this->_te_modeDefault )); ?>';" /><?php
+					?><input class="te te_buttons cancle_button" type="button" name="btnCancel" value="Cancel" onclick="document.location='<?php echo htmlspecialchars($this->url( 'te_mode=' . $this->_te_modeDefault )); ?>';" /><?php
 				}
 			?>
 				<div style="clear: both;"></div>
@@ -133,4 +134,5 @@
 
 		</fieldset>
 	</form>
+</div>
 </div>

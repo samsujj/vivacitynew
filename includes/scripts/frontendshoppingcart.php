@@ -85,6 +85,7 @@ if($noofslider > $noofsliderint){
 
 
 
+
     });
 
     function showmulticarousel(){
@@ -92,28 +93,39 @@ if($noofslider > $noofsliderint){
 
         if(winwidth > 1240){
             $('.multi-item-carousel .item').each(function(){
-                var next = $(this).next();
+
+                var next = $(this).next('.item');
 
                 if (!next.length) {
                     next = $(this).siblings(':first');
                 }
+
                 next.children(':first-child').clone().appendTo($(this));
 
-                /*if (next.next().length>0) {
+                if (next.next('.item').length>0) {
                     next.next().children(':first-child').clone().appendTo($(this));
+
+                    if (next.next('.item').next('.item').length>0) {
+                        next.next().next().children(':first-child').clone().appendTo($(this));
+                    } else {
+                        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                    }
+
                 } else {
                     $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-                }*/
+                    $(this).siblings(':first').children(':first-child').next().clone().appendTo($(this));
+                }
+
             });
         }else if(winwidth > 992){
             $('.multi-item-carousel .item').each(function(){
-                var next = $(this).next();
+                var next = $(this).next('.item');
                 if (!next.length) {
                     next = $(this).siblings(':first');
                 }
                 next.children(':first-child').clone().appendTo($(this));
 
-                if (next.next().length>0) {
+                if (next.next('.item').length>0) {
                     next.next().children(':first-child').clone().appendTo($(this));
                 } else {
                     $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
@@ -121,17 +133,11 @@ if($noofslider > $noofsliderint){
             });
         }else if(winwidth > 640){
             $('.multi-item-carousel .item').each(function(){
-                var next = $(this).next();
+                var next = $(this).next('.item');
                 if (!next.length) {
                     next = $(this).siblings(':first');
                 }
                 next.children(':first-child').clone().appendTo($(this));
-
-                /*if (next.next().length>0) {
-                    next.next().children(':first-child').clone().appendTo($(this));
-                } else {
-                    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-                }*/
             });
         }
 
@@ -213,7 +219,7 @@ if($noofslider > $noofsliderint){
                                                 </div>
                                                 <div class="instockdiv">IN Stock</div>
                                             </h4>
-                                            <h5>Subtotal : <span>$ <?php echo h(number_format($stock->get_price() * $cart_data['qty'], 2)); ?></span> <a href="javascript:void(0)" onclick="delItem(<?php echo $stock_id;?>)"><div class="deletediv"><img src="system/themes/vivacity_frontend/images/icon-deleteshopcart.png">Delete</div></a></h5>
+                                            <h5>Subtotal : <span>$ <?php echo h(number_format($stock->get_price() * $cart_data['qty'], 2)); ?></span> <a href="javascript:void(0)" onclick="delconfirm(<?php echo $stock_id;?>)"><div class="deletediv"><img src="system/themes/vivacity_frontend/images/icon-deleteshopcart.png">Delete</div></a></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -514,7 +520,7 @@ if($noofslider > $noofsliderint){
 </div>
 -->
 
-<?php
+<?php /*
 if($p_count > 0){
 ?>
     <div class="container-fluid spcartblock2">
@@ -593,13 +599,13 @@ if($p_count > 0){
 
 <?php
 }
-
+*/
 ?>
 
 
 
 
-<?php/*
+<?php
 if($p_count > 0) {
     ?>
     <div class="container-fluid spcartblock2">
@@ -613,6 +619,14 @@ if($p_count > 0) {
 
             <div class="prodcartwrapper">
                 <div class="carousel slide multi-item-carousel" id="theCarousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#theCarousel" data-slide-to="1"></li>
+                        <li data-target="#theCarousel" data-slide-to="2"></li>
+                        <li data-target="#theCarousel" data-slide-to="3"></li>
+                    </ol>
+
                     <div class="carousel-inner">
                         <?php
                         $i=1;
@@ -629,13 +643,20 @@ if($p_count > 0) {
                                 $firstcls = 'active';
                             }
 
+
+                            $ptitle =  $product['title'];
+                            $ptitle1 = strtolower($ptitle);
+                            $ptitle1 = preg_replace("/[^a-z0-9_\s-]/", "", $ptitle1);
+                            $ptitle1 = preg_replace("/[\s-]+/", " ", $ptitle1);
+                            $ptitle1 = preg_replace("/[\s_]/", "-", $ptitle1);
+
                         ?>
                             <div class="item <?php echo $firstcls?>">
                                 <div class="spblock2singleprod">
                                     <div class="spblock1prodwrapper">
-                                        <img src="<?php echo $img_path;?>">
+                                        <a href="product-details/<?php echo $product['product_id'];?>/<?php echo $ptitle1;?>"><img src="<?php echo $img_path;?>"></a>
                                     </div>
-                                    <h1><?php echo $product['title'];?></h1>
+                                    <h1> <a href="product-details/<?php echo $product['product_id'];?>/<?php echo $ptitle1;?>"><?php echo $product['title'];?></a></h1>
                                     <span class="hr"></span>
                                     <h3>$ <?php echo number_format($product['price'],2,'.','')?></h3>
                                     <a class="btn btn-default btngreencart"  onclick="addtocart1('<?php echo $product['product_id'];?>',<?php echo $product['stock_item_id'];?>)">Add to Cart</a>
@@ -643,15 +664,12 @@ if($p_count > 0) {
                             </div>
                         <?php
 
-                            if($i == 2){
-                                break;
-                            }
-
                             $i++;
 
+
                         }   ?>
-                        <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                        <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                        <!--<a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>-->
                     </div>
                 </div>
                 </div>
@@ -660,5 +678,5 @@ if($p_count > 0) {
         </div>
     </div>
     <?php
-}*/
+}
 ?>

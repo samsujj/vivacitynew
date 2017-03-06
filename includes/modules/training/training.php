@@ -40,7 +40,7 @@ if(($ai_query_2 != NULL || $ai_query_3 != NULL) || $te_class != NULL)
 {
 	if($AI->skin->vars['skinname']!='full_page')
 	{
-		echo '<a href="'.$url_base.'">Back To Main Page</a>';
+		echo '<div class="mainbckcls"><a href="'.$url_base.'">Back To Main Page</a></div>';
 	}
 }
 
@@ -251,7 +251,7 @@ if(($ai_query_1 == "manage" && $ai_query_2 == "categories") || $te_class == "tra
 			$te_training_lessons = new C_te_training_lessons();
 			if( $te_training_lessons->te_permit['insert'] )
 			{
-				echo "<a class=\"te_button te_new_button\" href=\"$url_base?te_class=training_lessons&te_mode=insert\" title=\"New\"><span class=\"te_button te_new_button\">Click here to create a new lesson</span></a>\n";
+				echo "<a class=\"te_button te_new_button\" href=\"$url_base?te_class=training_lessons&te_mode=insert\" title=\"New\"><span>Click here to create a new lesson</span></a>\n";
 			}
 		}
 	} else {

@@ -5,8 +5,10 @@
 	
 	require_once( ai_cascadepath( dirname(__FILE__) . '/includes/class.te_blog_ad.php' ) );
 
-echo '<link href="includes/modules/blog_ad/blog_ad.css" rel="stylesheet">';
-	
+require_once ('includes/scripts/vivbackendheader.php');
+
+//echo '<link href="includes/modules/blog_ad/blog_ad.css" rel="stylesheet">';
+
 	global $AI;
 
 	if(@$_GET['te_mode'] != 'insert' && @$_GET['te_mode'] != 'update'){

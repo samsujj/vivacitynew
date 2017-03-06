@@ -86,13 +86,40 @@ $( document ).ready(function() {
 
     if($('#checkout_billing_shipping_same').is(':checked')){
         $('.chk_ship_fld').hide();
+        $('#ship_first_name').val($('#bill_first_name').val());
+        $('#ship_last_name').val($('#bill_last_name').val());
+        $('#ship_address_line_1').val($('#bill_address_line_1').val());
+        $('#ship_address_line_2').val($('#bill_address_line_2').val());
+        $('#ship_city').val($('#bill_city').val());
+        $('#ship_postal_code').val($('#bill_postal_code').val());
+        $('#ship_email').val($('#bill_email').val());
+        $('#ship_region').val($('#bill_region').val());
+
     }
 
     $('#checkout_billing_shipping_same').change(function () {
         if($(this).is(':checked')){
             $('.chk_ship_fld').hide();
+           // $('.chk_ship_fld').show();
+            $('#ship_first_name').val($('#bill_first_name').val());
+            $('#ship_last_name').val($('#bill_last_name').val());
+            $('#ship_address_line_1').val($('#bill_address_line_1').val());
+            $('#ship_address_line_2').val($('#bill_address_line_2').val());
+            $('#ship_city').val($('#bill_city').val());
+            $('#ship_postal_code').val($('#bill_postal_code').val());
+            $('#ship_email').val($('#bill_email').val());
+            $('#ship_region').val($('#bill_region').val());
         }else{
+           // $('.chk_ship_fld').hide();
             $('.chk_ship_fld').show();
+            $('#ship_first_name').val('');
+            $('#ship_last_name').val('');
+            $('#ship_address_line_1').val('');
+            $('#ship_address_line_2').val('');
+            $('#ship_city').val('');
+            $('#ship_postal_code').val('');
+            $('#ship_email').val('');
+           // $('#ship_region').val('');
         }
     })
 $('.life').click(function(){
@@ -135,15 +162,22 @@ function facebookshare(e){
     description=$(e).attr('postdescription');
     image=$(e).attr('postimage');
     id=$(e).attr('postid');
+    repurl=$(e).attr('repurl');
     //alert(title);
    // alert(image);
    // alert(description);
    // e.preventDefault();
+
+    var link222 = 'http://www.vivacitygo.com/blogdetails/'+id+'/'+title;
+    if(typeof (repurl) != 'undefined'){
+        link222 = repurl + '/blogdetails/'+id+'/'+title;
+    }
+
     FB.ui(
         {
             method: 'feed',
             name: title,
-            link: 'http://www.vivacitygo.com/blogdetails/'+id+'/'+title,
+            link: link222,
             picture: 'http://www.vivacitygo.com/uploads/blogmanager/'+image,
            // caption: 'Top 3 reasons why you should care about your finance',
             description: description,
@@ -155,15 +189,23 @@ function facebookshareproduct(e){
     description=$(e).attr('postdescription');
     image=$(e).attr('postimage');
     id=$(e).attr('postid');
+    repurl=$(e).attr('repurl');
     //alert($('.userid').text());
    // alert(image);
    // alert(description);
    // e.preventDefault();
+
+    var link222 = 'http://'+$('.userid').text()+'.vivacitygo.com/product-details/'+id+'/'+title;
+    if(typeof (repurl) != 'undefined'){
+        link222 = repurl + '/product-details/'+id+'/'+title;
+    }
+
+
     FB.ui(
         {
             method: 'feed',
             name: title,
-            link: 'http://'+$('.userid').text()+'.vivacitygo.com/product-details/'+id+'/'+title+'ai_bypass=true',
+            link: link222,
             picture: 'http://www.vivacitygo.com/'+image,
            // caption: 'Top 3 reasons why you should care about your finance',
             description: description,
@@ -175,15 +217,22 @@ function facebookshareproductinfo(e){
     description=$(e).attr('postdescription');
     image=$(e).attr('postimage');
     id=$(e).attr('postid');
+    repurl=$(e).attr('repurl');
     //alert(title);
    // alert(image);
    // alert(description);
    // e.preventDefault();
+
+    var link222 = 'http://'+$('.userid').text()+'.vivacitygo.com/product-info/'+id+'/'+title;
+    if(typeof (repurl) != 'undefined'){
+        link222 = repurl + '/product-info/'+id+'/'+title;
+    }
+
     FB.ui(
         {
             method: 'feed',
             name: title,
-            link: 'http://'+$('.userid').text()+'.vivacitygo.com/product-info/'+id+'/'+title+'ai_bypass=true',
+            link: link222,
             picture: 'http://www.vivacitygo.com/'+image,
            // caption: 'Top 3 reasons why you should care about your finance',
             description: description,
@@ -194,15 +243,24 @@ function facebookshareproductstatic(e){
     title=$(e).attr('posttitle');
     description=$(e).attr('postdescription');
     image=$(e).attr('postimage');
+    repurl=$(e).attr('repurl');
+    urltitle=$(e).attr('urltitle');
     //alert(title);
    // alert(image);
    // alert(description);
    // e.preventDefault();
+
+    var link222 = 'http://'+$('.userid').text()+'.vivacitygo.com/'+urltitle;
+    if(typeof (repurl) != 'undefined'){
+        link222 = repurl + '/'+urltitle;
+    }
+
+
     FB.ui(
         {
             method: 'feed',
             name: title,
-            link: 'http://'+$('.userid').text()+'.vivacitygo.com/'+title+'ai_bypass=true',
+            link: link222,
             picture: 'http://www.vivacitygo.com/'+image,
            // caption: 'Top 3 reasons why you should care about your finance',
             description: description,
@@ -245,6 +303,8 @@ function quanInc(stock_id) {
 
 function addtocart(pid,stock_id) {
 
+    $('#loader').show();
+
     var quan = $('.productquanbloc').find('#quanvalue').val();
     if(isNaN(quan)){
         quan = 1;
@@ -257,6 +317,7 @@ function addtocart(pid,stock_id) {
     $.post('cart?ai_skin=full_page&cmd=add_item',{'cart_cmd':'add','product_id':pid,'stock_item':stock_id,'quantity':quan},function(res){
         //window.location.href = '/shopping-cart-1';
         $.post('custom_cart',{},function(res2){
+            $('#loader').hide();
             var cres = JSON.parse(res2);
             $('#topquan').text(cres.totalquan);
             $('#toptotamnt').text(cres.totalamount);
@@ -279,9 +340,12 @@ function addtocart(pid,stock_id) {
 function addtocart1(pid,stock_id) {
     var quan = 1;
 
+    $('#loader').show();
+
     $.post('cart?ai_skin=full_page&cmd=add_item',{'cart_cmd':'add','product_id':pid,'stock_item':stock_id,'quantity':quan},function(res){
 //        window.location.href = '/shopping-cart-1';
         $.post('custom_cart',{},function(res2){
+            $('#loader').hide();
             var cres = JSON.parse(res2);
             $('#topquan').text(cres.totalquan);
             $('#toptotamnt').text(cres.producttotal);
@@ -308,8 +372,10 @@ function addtocart1(pid,stock_id) {
 }
 
 function delItem(stock_id){
+    $('#loader').show();
     $.post('shopping-cart',{'cmd':'remove','id':stock_id},function(res){
         $.post('custom_cart',{},function(res2){
+            $('#loader').hide();
             var cres = JSON.parse(res2);
             if(cres.totalquan > 0){
                 $('#topquan').text(cres.totalquan);
@@ -337,11 +403,23 @@ function delItem(stock_id){
     })
 }
 
+function delconfirm(stock_id){
+    $('#confModal').find('#confBtn').attr('stock_id',stock_id);
+    $('#confModal').modal('show');
+}
+
+function delItem1(obj){
+    $('#confModal').modal('hide');
+    delItem($(obj).attr('stock_id'));
+}
+
 function updateQuan(stock_id) {
+    $('#loader').show();
     var amount = $('#quanvalue'+stock_id).val();
     $.post('shopping-cart',{'cmd':'update','id':stock_id,'amount':amount},function(res){
         //window.location.reload();
         $.post('custom_cart',{},function(res2){
+            $('#loader').hide();
             var cres = JSON.parse(res2);
             $('#topquan').text(cres.totalquan);
             $('#toptotamnt').text(cres.producttotal);

@@ -1,6 +1,85 @@
-.box_main{ background:#fff; width:1170px; margin:18px auto; padding:10px;}
+@font-face {
+	font-family: 'RalewayBold';
+	src: url('fonts/Raleway-Bold.eot');
+	src: url('fonts/Raleway-Bold.eot?#iefix') format('embedded-opentype'),
+	url('fonts/Raleway-Bold.woff') format('woff'),
+	url('fonts/Raleway-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
 
-.box_main button { background: #004c92 none repeat scroll 0 0 !important;
+
+@font-face {
+	font-family: 'RalewaySemiBold';
+	src: url('fonts/Raleway-SemiBold.eot');
+	src: url('fonts/Raleway-SemiBold.eot?#iefix') format('embedded-opentype'),
+	url('fonts/Raleway-SemiBold.woff') format('woff'),
+	url('fonts/Raleway-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'RalewayRegular';
+	src: url('fonts/Raleway-Regular.eot');
+	src: url('fonts/Raleway-Regular.eot?#iefix') format('embedded-opentype'),
+	url('fonts/Raleway-Regular.woff2') format('woff2'),
+	url('fonts/Raleway-Regular.woff') format('woff'),
+	url('fonts/Raleway-Regular.ttf') format('truetype'),
+	url('fonts/Raleway-Regular.svg#Raleway-Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RalewayExtraBold';
+	src: url('fonts/Raleway-ExtraBold.eot');
+	src: url('fonts/Raleway-ExtraBold.eot?#iefix') format('embedded-opentype'),
+	url('fonts/Raleway-ExtraBold.woff') format('woff'),
+	url('fonts/Raleway-ExtraBold.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RalewayBlack';
+	src: url('fonts/Raleway-Black.eot');
+	src: url('fonts/Raleway-Black.eot?#iefix') format('embedded-opentype'),
+	url('fonts/Raleway-Black.woff2') format('woff2'),
+	url('fonts/Raleway-Black.woff') format('woff'),
+	url('fonts/Raleway-Black.ttf') format('truetype'),
+	url('fonts/Raleway-Black.svg#Raleway-Black') format('svg');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('fonts/Oswald-Regular.eot');
+	src: url('fonts/Oswald-Regular.eot?#iefix') format('embedded-opentype'),
+	url('fonts/Oswald-Regular.woff') format('woff'),
+	url('fonts/Oswald-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body{font-family:"RalewayRegular"; padding: 0px; margin: 0;}
+h1, h2, h3, h4, h5, h6{font-family:"RalewayRegular";}
+table th, table td{font-family:"RalewayRegular";}
+.page-share_links{ font-family:"RalewayRegular"; padding: 0px; margin: 0; font-size: 16px;}
+
+
+.box_main{
+	background: #fff;
+	width: 98%;
+	margin: 18px auto;
+	padding: 10px;
+}
+
+
+.box_main button {
+	background: #232323 none repeat scroll 0 0 !important;
 	border: medium none !important;
 	border-radius: 0 !important;
 	box-shadow: none !important;
@@ -9,20 +88,23 @@
 
 	font-size: 14px !important;
 	height: 32px !important;
-	line-height: 32px !important;
+	line-height: 22px !important;
 	margin: 0 10px 0 0 !important;
 	text-align: center !important;
-	min-width: 80px !important;}
+	min-width: 80px !important;
+}
 
 
-.box_main  h2{  color: #545454;
+.box_main  h2{
+	color: #545454;
 	font-size: 24px;
 	font-weight: normal;
 	margin: 20px 0 0 0;
-	padding: 0;}
+	padding: 0;
+}
 
 .box_main  h2::after {
-	background: #004c92 none repeat scroll 0 0;
+	background: #d92b8a none repeat scroll 0 0;
 	content: "";
 	display: block;
 	height: 2px;
@@ -32,10 +114,10 @@
 
 .box_main #pixel_main_table{ width:100%; margin-bottom:30px;}
 
-.box_main #pixel_main_table th{ background:#01a1fc; padding:10px; text-align:center; font-size:16px; font-weight:normal; color:#fff; border:solid 1px #fff;}
+.box_main #pixel_main_table th{ background:#688816; padding:10px; text-align:center; font-size:16px; font-weight:normal; color:#fff; border:solid 1px #fff;}
 .box_main #pixel_main_table td{ background:#fff; padding:10px 0; text-align:center; font-size:16px; font-weight:normal; color:#545454; border:solid 1px #e6e5e5;}
 
-.box_main #pixel_main_table td h4{ font-weight:normal; font-size:16px; color:#004c92;}
+.box_main #pixel_main_table td h4{ font-weight:normal; font-size:16px; color:#232323;}
 
 .box_main #pixel_main_table td img{ display:block; margin:0 auto;}
 
@@ -46,23 +128,26 @@
 
 
 
-.box_main #pixel_main_table td .editbtn{  background: #004c92 url("images/editlink.png") no-repeat  14px  center!important; background-size:14px!important;}
+.box_main #pixel_main_table td .editbtn{  background: #232323 url("images/editlink.png") no-repeat  14px  center!important; background-size:14px!important;}
 
-.box_main #pixel_main_table td .deletebtn{  background: #004c92 url("images/deleteicon.png") no-repeat   8px  center!important; background-size:14px!important;}
+.box_main #pixel_main_table td .deletebtn{  background: #232323 url("images/deleteicon.png") no-repeat   8px  center!important; background-size:14px!important;}
 
-#google_ad_form .te_buttons .te_buttons{ background: #01a1fc none repeat scroll 0 0 !important;
-	border: medium none !important;
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	color: #ffffff !important;
-	display: block !important;
-	float: left !important;
-	font-size: 14px !important;
-	height: 36px !important;
-	line-height: 36px !important;
-	margin: 0 10px 0 0 !important;
-	text-align: center !important;
-	width: 144px !important;
+#google_ad_form .te_buttons .te_buttons{
+	background: #3d3d3d!important;
+	display: block!important;
+	float: left!important;
+	margin: 0 10px 0 0!important;
+	width: 144px!important;
+	height: 36px!important;
+	border: none!important;
+	cursor: pointer!important;
+	border-radius: 0px!important;
+	box-shadow: none!important;
+	background-image: none!important;
+	font-size: 14px!important;
+	color: #ffffff!important;
+	text-align: center!important;
+	line-height: 36px!important;
 }
 
 #google_ad_form fieldset {  margin: 0 auto;
@@ -143,44 +228,50 @@ div.te_edit div.te_buttons{background: none!important; border: none!important; p
 
 
 .te_viewnav_top .te_delete_form .confirm_button {
-	background: #01a1fc none repeat scroll 0 0 !important;
-	border: medium none !important;
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	color: #ffffff !important;
-	display: block !important;
-	float: left !important;
-	font-size: 14px !important;
-	height: 36px !important;
-	line-height: 36px !important;
-	margin: 0 5px  !important;
-	text-align: center !important;
-	width: 126px !important;
+	background: #01a1fc none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #ffffff;
+	display: block;
+	float: left;
+	font-size: 14px;
+	height: 36px;
+	line-height: 36px;
+	margin: 0 5px;
+	text-align: center;
+	width: 126px;
 }
 
 
 .te_viewnav_top .te_delete_form .cancel_button {
-	background: #01a1fc none repeat scroll 0 0 !important;
-	border: medium none !important;
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	color: #ffffff !important;
-	display: block !important;
-	float: left !important;
-	font-size: 14px !important;
-	height: 36px !important;
-	line-height: 36px !important;
-	margin: 0 5px  !important;
-	text-align: center !important;
-	width: 126px !important;
+	background: #01a1fc none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #ffffff;
+	display: block;
+	float: left;
+	font-size: 14px;
+	height: 36px;
+	line-height: 36px;
+	margin: 0 5px;
+	text-align: center;
+	width: 126px;
 }
 
 
 .td_contain{ padding:15px 50px!important; line-height: 26px;}
 
-.td_contain h4::after{ content:''; width: 120px; display: block; height: 2px; background: #004c92; margin: 5px auto;}
+.td_contain h4::after{ content:''; width: 120px; display: block; height: 2px; background: #d92b8a; margin: 5px auto;}
 
 .td_contain a{ color: #006600;}
 .td_contain a:hover{ color: #006600; text-decoration: none;}
 
 .addbtn { vertical-align: middle!important;}
+
+.box_main #pixel_main_table td h4 a {
+	font-weight: normal;
+	font-size: 16px;
+	color: #006600 !important;
+}

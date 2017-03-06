@@ -4,6 +4,15 @@ $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri_segments = explode('/', $uri_path);
 $product_id = $uri_segments[2];
 
+$repUrl = 'http://vivacitygo.com';
+
+if(util_rep_id()){
+    $repId = util_rep_id();
+    $repArr = util_get_uarr($repId);
+    $repUrl = 'http://'.$repArr['username'].'.vivacitygo.com';
+}
+
+
 $p_res = db_query("SELECT * FROM `products` WHERE `product_id`=".$product_id);
 
 $product_details = db_fetch_assoc($p_res);
@@ -23,10 +32,22 @@ if(file_exists($product_details['img_url'])){
 $products_arr=array(5,6,7,8,18,19,20,21,22);
 $products_arr=array_diff($products_arr,array($product_id));
 
+if($_SERVER['SERVER_NAME'] == 'www.vivacitygo.net'){
+    $products_arr=array(5,6,7,8,18,19,20,21,22);
+    $products_arr=array_diff($products_arr,array($product_id));
+}else{
+    $products_arr=array(5,6,7,8,18,19,20,21);
+    $products_arr=array_diff($products_arr,array($product_id));
+}
+
 $product_cls1_arr = array(5=>'infocls1',6=>'infocls2',7=>'infocls3',8=>'infocls4',18=>'infocls5',19=>'infocls6',20=>'infocls7',21=>'infocls8',22=>'infocls9');
 $product_cls2_arr = array(5=>'infohead1',6=>'infohead2',7=>'infohead3',8=>'infohead4',18=>'infohead5',19=>'infohead6',20=>'infohead7',21=>'infohead8',22=>'infohead9');
 
+
+
 $o_res = db_query("SELECT `p`.`product_id`,`p`.`title` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` WHERE `pf`.`folderID`=12 AND `p`.`product_id` IN (".implode(',',$products_arr).") ORDER BY `p`.`title`");
+
+
 
 
 
@@ -40,12 +61,12 @@ if($product_details['img_url']!=''){
 //$description=$AI->get_defaulted_dynamic_area($product_details['description'],'');
 $description=strip_tags($AI->get_defaulted_dynamic_area($product_details['description'],''));
 
-$url11="https://plus.google.com/share?url=".urlencode('http://'.strtolower($AI->user->username).'.vivacitygo.com/product-info/'.$product_details['product_id'].'/'.getpropername($product_details['title']))."?ai_bypass=true";
+$url11="https://plus.google.com/share?url=".urlencode($repUrl.'/product-info/'.$product_details['product_id'].'/'.getpropername($product_details['title']))."?ai_bypass=true";
 //$url11="https://plus.google.com/share?url=https://www.vivacity.com/?ai_bypass=true";
 //echo db_num_rows($resblogorderbypriority);
 
 
-$pinteresturl22= "http://pinterest.com/pin/create/button/?url=http://". strtolower($AI->user->username).".vivacitygo.com/product-info/".$product_details['product_id']."/".getpropername($product_details['title'])."&media=http://www.vivacitygo.com/".$file."&description=";
+$pinteresturl22= "http://pinterest.com/pin/create/button/?url=".$repUrl."/product-info/".$product_details['product_id']."/".getpropername($product_details['title'])."&media=http://www.vivacitygo.com/".$file."&description=";
 function getpropername($title=''){
     $pro_url_title = strtolower(trim($title));
     $pro_url_title = preg_replace("/[^a-z0-9_\s-]/", "", $pro_url_title);
@@ -132,7 +153,7 @@ function getpropername($title=''){
                     <div class="videoblock1rightblock3">
                         <ul class="list-inline">
                             <li>
-                                <a postid="<?php echo $id ?>" posttitle="<?php echo $name ?>" postdescription="<?php echo $description ?>" postimage="<?php echo $file ?>" onclick="facebookshareproductinfo(this)" href="javascript:void(0)" >
+                                <a postid="<?php echo $product_details['product_id'] ?>" posttitle="<?php echo $name ?>" postdescription="<?php echo $description ?>" postimage="<?php echo $file ?>" repurl="<?php echo $repUrl;?>" onclick="facebookshareproductinfo(this)" href="javascript:void(0)" >
                                     <img src="system/themes/vivacity_frontend/images/iconfbvideo.png">
                                 </a>
                             </li>
@@ -142,7 +163,7 @@ function getpropername($title=''){
                                 </a>
                             </li>
                             <li>
-                                <a href="https://twitter.com/intent/tweet?original_referer=http://<?php echo strtolower($AI->user->username);?>.vivacitygo.com/product-info/<?php echo $product_details['product_id']?>/<?php echo getpropername($product_details['title'])?>&text=<?php echo strip_tags($product_details['title'])?>&tw_p=tweetbutton&url=http://<?php echo strtolower($AI->user->username);?>.vivacitygo.com/product-info/<?php echo $product_details['product_id']?>/<?php echo getpropername($product_details['title'])?>&via=vivacitygo
+                                <a href="https://twitter.com/intent/tweet?original_referer=<?php echo $repUrl;?>/product-info/<?php echo $product_details['product_id']?>/<?php echo getpropername($product_details['title'])?>&text=<?php echo strip_tags($product_details['title'])?>&tw_p=tweetbutton&url=http://<?php echo strtolower($AI->user->username);?>.vivacitygo.com/product-info/<?php echo $product_details['product_id']?>/<?php echo getpropername($product_details['title'])?>&via=vivacitygo
 " target="_blank">
                                     <img src="system/themes/vivacity_frontend/images/icontwvideo.png">
                                 </a>

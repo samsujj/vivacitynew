@@ -5,7 +5,9 @@
 	
 	require_once( ai_cascadepath( dirname(__FILE__) . '/includes/class.te_pdf_manager.php' ) );
 
-echo '<link href="includes/modules/pdf_manager/pdf_manager.css" rel="stylesheet">';
+require_once ('includes/scripts/vivbackendheader.php');
+
+//echo '<link href="includes/modules/pdf_manager/pdf_manager.css" rel="stylesheet">';
 	
 	global $AI;
 

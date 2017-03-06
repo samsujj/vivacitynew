@@ -345,10 +345,7 @@ $type = 3;
 
 			$pixel_arr = $AI->db->getAll("SELECT * FROM `share_asset` WHERE share_link_id = " . (int) db_in($id) . " AND status=1 AND type='".$s_type."';");
 
-			echo '<div style="padding:25px 0; background:#fff; width:100%">
-<h2 style="width: 100%; text-align: center; margin:0; padding: 5px 0px; font-size: 26px; color: #333;" >Banners</h2>
-<div style="width: 180px; height:2px; background: #333; margin:0 auto;"></div>
-</div>';
+			//echo '<div style="padding:25px 0; background:#fff; width:100%"><h2 style="width: 100%; text-align: center; margin:0; padding: 5px 0px; font-size: 26px; color: #333;" >Banners</h2><div style="width: 180px; height:2px; background: #333; margin:0 auto;"></div></div>';
 
 			if(count($pixel_arr)){
 

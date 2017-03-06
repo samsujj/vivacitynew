@@ -6,7 +6,7 @@
 	global $AI;
 
 ?>
-<link href="includes/modules/share_links/share_links.css" rel="stylesheet">
+<!--<link href="includes/modules/share_links/share_links.css" rel="stylesheet">-->
 <script type="text/javascript" language="javascript">
 	<!--
 	function trim( str )
@@ -60,6 +60,14 @@
 	//-->
 </script>
 
+<?php
+
+if($this->te_mode == 'insert'){
+    $postURL = 'share_links?te_class=share_links&te_mode=insert_old&te_key=';
+}
+
+?>
+<div class="sharelinkmainwrapper">
 <div class="te_edit share_links_edit">
 	<form id="share_links_form" enctype="multipart/form-data" class="te" method="post" action="<?php echo htmlspecialchars($postURL); ?>" onsubmit="return check_share_links_form( this );" >
 		<fieldset class="te">
@@ -185,4 +193,5 @@
 
 		</fieldset>
 	</form>
+</div>
 </div>

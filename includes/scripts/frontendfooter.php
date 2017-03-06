@@ -82,7 +82,7 @@ global $AI;
                                 <h2>CONTACT US</h2>
                                 <li><span class="glyphicon glyphicon-map-marker"></span>Florence, Alabama</li>
                                 <li><span class="glyphicon glyphicon-phone"></span><a href="tel:800.928.9401">800.928.9401</a></li>
-                                <li class="ftremail"><span class="glyphicon glyphicon-envelope"></span><a href="mailto:customerservice@vivacitygo.com">customerservice@vivacitygo.com</a></li>
+                                <li class="ftremail"><span class="glyphicon glyphicon-envelope"></span><a href="mailto:customerservice@vivacitygo.com">customerservice@teamvivacity.com</a></li>
                             </ul>
                         </div>
                     </div>

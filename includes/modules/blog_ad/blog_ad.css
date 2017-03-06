@@ -1,18 +1,18 @@
 .box_main{ background:#fff; width:1170px; margin:18px auto; padding:10px;}
 
-.box_main button { background: #004c92 none repeat scroll 0 0 !important;
-    border: medium none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    color: #ffffff !important;
-    display: inline-block !important;
+.box_main button { background: #004c92 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #ffffff;
+    display: inline-block;
 
-    font-size: 14px !important;
-    height: 32px !important;
-    line-height: 32px !important;
-    margin: 0 10px 0 0 !important;
-    text-align: center !important;
-    min-width: 80px !important;}
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 10px 0 0;
+    text-align: center;
+    min-width: 80px;}
 
 
 .box_main  h2{  color: #545454;
@@ -75,7 +75,7 @@
     border-radius: 8px;
     box-shadow: none;
     color: #545454; background:#f0f0f0;
-    height: 100px !important;
+    height: 100px;
 }
 
 
@@ -92,19 +92,19 @@
 div.te_edit div.te_buttons{background: none!important; border: none!important; padding: 0px!important; }
 
 #google_ad_form .te_buttons .te_buttons {
-    background: #01a1fc none repeat scroll 0 0 !important;
-    border: medium none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    color: #ffffff !important;
-    display: block !important;
-    float: left !important;
-    font-size: 14px !important;
-    height: 36px !important;
-    line-height: 36px !important;
-    margin: 0 10px 0 0 !important;
-    text-align: center !important;
-    width: 144px !important;
+    background: #01a1fc none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #ffffff;
+    display: block;
+    float: left;
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 10px 0 0;
+    text-align: center;
+    width: 144px;
 }
 
 .span-one-third { width:100%!important; margin:0!important; padding:0!important;}
@@ -128,49 +128,52 @@ div.te_edit div.te_buttons{background: none!important; border: none!important; p
 .te_viewnav_top .te_delete_form{ background:none; border:none; width:274px; margin:20px auto; padding-bottom:10px; }
 
 .te_viewnav_top .te_delete_form .confirm_button {
-    background: #01a1fc none repeat scroll 0 0 !important;
-    border: medium none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    color: #ffffff !important;
-    display: block !important;
-    float: left !important;
-    font-size: 14px !important;
-    height: 36px !important;
-    line-height: 36px !important;
-    margin: 0 5px  !important;
-    text-align: center !important;
-    width: 126px !important;
+    background: #01a1fc none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0 ;
+    box-shadow: none;
+    color: #ffffff;
+    display: block;
+    float: left;
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 5px;
+    text-align: center;
+    width: 126px;
 }
 
 .te_viewnav_top .te_delete_form .cancel_button {
-    background: #01a1fc none repeat scroll 0 0 !important;
-    border: medium none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    color: #ffffff !important;
-    display: block !important;
-    float: left !important;
-    font-size: 14px !important;
-    height: 36px !important;
-    line-height: 36px !important;
-    margin: 0 5px  !important;
-    text-align: center !important;
-    width: 126px !important;
+    background: #01a1fc none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #ffffff;
+    display: block;
+    float: left;
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 5px;
+    text-align: center;
+    width: 126px;
 }
 
-.te_action_menu .te_legend{display: block!important; color: #004c92!important; margin-left: 7px;}
+.te_action_menu .te_legend{display: block; color: #004c92; margin-left: 7px;}
 
-.te_action_menu .te_new_button{ background: #004c92 none repeat scroll 0 0 !important;
-    border: medium none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    color: #ffffff !important;
-    display: inline-block !important;
+.te_action_menu .te_new_button{
+    background: #004c92 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #ffffff;
+    display: inline-block;
 
-    font-size: 14px !important;
-    height: 32px !important;
-    line-height: 32px !important;
-    margin: 0 10px 0 0 !important;
-    text-align: center !important;
-    min-width: 80px !important;}
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 10px 0 0;
+    text-align: center;
+    min-width: 80px;
+}
+

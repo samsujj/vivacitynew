@@ -180,7 +180,9 @@ if(isset($_GET['keyword'])){
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/aboutus">About Us</a></li>
-                                    <li><a href="/cannabinoides">Science</a></li>
+                                    <li><a href="/supersaturdays">super saturdays</a></li>
+                                    <li><a href="/corporateupdates">corporate updates</a></li>
+                                    <!--<li><a href="/cannabinoides">Science</a></li>-->
                                 </ul>
                             </li>
                             <li><a href="/programs">Programs</a></li>
@@ -191,16 +193,17 @@ if(isset($_GET['keyword'])){
                                 </a>
                                 <ul class="dropdown-menu">
                                    <!-- <li><a href="/social-followup">Social</a></li>-->
-                                   <!-- <li><a href="/videos">Videos</a></li>
-                                    <li><a href="/blogs">Blog</a></li>-->
+                                    <li><a href="/videos">Videos</a></li>
+                                    <li><a href="/blogs">Blog</a></li>
 
-                                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#videosModal">Videos</a></li>
-                                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#blogideosModal">Blog</a></li>
+                                    <!--<li><a href="javascript:void(0)" data-toggle="modal" data-target="#videosModal">Videos</a></li>
+                                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#blogideosModal">Blog</a></li>-->
+                                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#videosModal">VIO-Shift</a></li>
 
                                 </ul>
                             </li>
 
-                            <li><a href="/opportunityenrollment">PREQUALIFY</a></li>
+                            <li><a href="<?php echo ($AI->user->account_type == 'Distributor')?'/enrollment':'/opportunityenrollment'; ?>">PREQUALIFY</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -252,3 +255,51 @@ if(isset($_GET['keyword'])){
     </div>
 </div>
 
+<style>
+    #loader{
+        background: rgba(0,0,0,.4);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: none;
+    }
+
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #179b13;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+        position: absolute;
+        top: 40%;
+        left: 49%;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
+<div id="loader">
+    <div class="loader"></div>
+</div>
+
+
+<div class="modal fade" id="confModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Are you sure want to delete this product from your cart?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button type="button" id="confBtn" class="btn btn-success" stock_id="0" onclick="delItem1(this)">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>

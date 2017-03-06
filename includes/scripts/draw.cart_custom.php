@@ -71,7 +71,7 @@
             $html2 .= '</div>';
             $html2 .= '<div class="instockdiv">IN Stock</div>';
             $html2 .= '</h4>';
-            $html2 .= '<h5>Subtotal : <span>$ '. h(number_format($stock->get_price() * $cart_data['qty'], 2)).'</span> <a href="javascript:void(0)" onclick="delItem('. $stock_id.')"><div class="deletediv"><img src="system/themes/vivacity_frontend/images/icon-deleteshopcart.png">Delete</div></a></h5>';
+            $html2 .= '<h5>Subtotal : <span>$ '. h(number_format($stock->get_price() * $cart_data['qty'], 2)).'</span> <a href="javascript:void(0)" onclick="delconfirm('. $stock_id.')"><div class="deletediv"><img src="system/themes/vivacity_frontend/images/icon-deleteshopcart.png">Delete</div></a></h5>';
             $html2 .= '</div>';
             $html2 .= '</div>';
             $html2 .= '</div>';

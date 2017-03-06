@@ -5,7 +5,9 @@
 	
 	require_once( ai_cascadepath( dirname(__FILE__) . '/includes/class.te_google_ad.php' ) );
 
-echo '<link href="includes/modules/google_ad/google_ad.css" rel="stylesheet">';
+require_once ('includes/scripts/vivbackendheader.php');
+
+//echo '<link href="includes/modules/google_ad/google_ad.css" rel="stylesheet">';
 	
 	global $AI;
 

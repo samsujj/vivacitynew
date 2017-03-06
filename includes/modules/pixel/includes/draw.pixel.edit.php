@@ -13,17 +13,14 @@ $res = db_query("SELECT p.*,psi.* FROM products AS p   JOIN product_stock_items 
 //var_dump($res);
 //$result=db_fetch_assoc($res);
 $results_array = array();
-while($row = db_fetch_assoc($res)) {
-	echo "<pre>";
-	print_r($row);
-	echo "</pre>";
+/*while($row = db_fetch_assoc($res)) {
 
-    /*if(in_array($row['stock_item_id'],$landingpagearray[$_GET['te_share_link_id']])) {
+    if(in_array($row['stock_item_id'],$landingpagearray[$_GET['te_share_link_id']])) {
         $results_array[] = $row;
-    }*/
- }
+    }
+ }*/
 $sel='';
-$sel .='<select onclick="get_product()" style="height:100%" id="stock_idd" name="stock_idd" multiple="multiple">';
+/*$sel .='<select onclick="get_product()" style="height:100%" id="stock_idd" name="stock_idd" multiple="multiple">';
 
   if(count($results_array)>0) {
       foreach($results_array as $val){
@@ -34,7 +31,7 @@ $sel .='<select onclick="get_product()" style="height:100%" id="stock_idd" name=
   }
 
 $sel .='</select>';
-
+*/
 
 //echo '<pre>';
 //print_r($results_array);
@@ -137,6 +134,7 @@ $sel .='</select>';
 	//-->
 </script>
 
+<div class="sharelinkmainwrapper">
 <div class="te_edit share_links_edit">
 	<form id="pixel_form" enctype="multipart/form-data" class="te" method="post" action="<?php echo htmlspecialchars($postURL); ?>" onsubmit="return check_share_links_form( this );" >
 		<fieldset class="te">
@@ -231,4 +229,5 @@ $sel .='</select>';
 
 		</fieldset>
 	</form>
+</div>
 </div>

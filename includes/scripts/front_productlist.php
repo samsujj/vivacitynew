@@ -1,6 +1,11 @@
 <?php
 
-$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `pf`.`folderID`=12 GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
+$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price`,`ps`.`alt_prices` FROM `products` `p` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `p`.`product_id` IN (SELECT `product_id` FROM `products2folders` WHERE `folderID` =12) AND `p`.`product_id` NOT IN (SELECT `product_id` FROM `products2folders` WHERE `folderID` =15) GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
+if($_SERVER['SERVER_NAME'] == 'www.vivacitygo.net'){
+    $p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price`,`ps`.`alt_prices` FROM `products` `p` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `p`.`product_id` IN (SELECT `product_id` FROM `products2folders` WHERE `folderID` =12) GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
+}
+
+
 
 
 ?>
@@ -31,7 +36,14 @@ $p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`fe
                 <?php
 
                 while($p_res && $product = db_fetch_assoc($p_res)) {
+                    //echo '<pre>';
+                    $altprice=unserialize($product['alt_prices']);
 
+                   // echo '</pre>';
+                    $productprice=$product['price'];
+                    if(($AI->user->account_type == 'Distributor' || $AI->user->account_type == 'Promoter') && $altprice[0]['price']!=0){
+                        $productprice= $altprice[0]['price'];
+                    }
                     $img_path = $product['img_url'];
 
                     if(!file_exists($img_path)){
@@ -55,7 +67,7 @@ $p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`fe
                         </div>
                         <a href="/product-details/<?php echo $id;?>/<?php echo $url_title;?>"><h1><?php echo $title; ?></h1></a>
                         <span class="hr"></span>
-                        <h3>$ <?php echo number_format($product['price'],2,'.','')?></h3>
+                        <h3>$ <?php echo number_format($productprice,2,'.','')?></h3>
                     </div>
 
                 <?php

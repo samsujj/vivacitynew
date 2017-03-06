@@ -30,6 +30,7 @@ $sub_domain = $AI->user->username;
 
 /*if ( @$this->te_permit['insert_share_link'] )
 {*/
+    echo'<div class="sharelinkmainwrapper">';
 	echo '<button onclick="document.location = \'' . h($this->url('te_mode=insert&te_share_link_id='.@$_GET['te_share_link_id'])) . '\'; return false;">New</button>';
 	echo '<button onclick="document.location = \'share_links\'; return false;">Back</button>';
 /*}*/
@@ -112,5 +113,7 @@ for ( $table_i = 0; $table_i < $this->_pgSize && $table_row; $table_i++ )
 }
 
 echo '</table>';
+
+echo'</div>';
 
 ?>

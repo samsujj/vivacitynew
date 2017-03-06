@@ -5,8 +5,9 @@
 	
 	require_once( ai_cascadepath( dirname(__FILE__) . '/includes/class.te_share_asset.php' ) );
 
-echo '<link href="includes/modules/share_asset/share_asset.css" rel="stylesheet">';
-	
+//echo '<link href="includes/modules/share_asset/share_asset.css" rel="stylesheet">';
+require_once ('includes/scripts/vivbackendheader.php');
+
 	global $AI;
 
 	$dbWhere = "";

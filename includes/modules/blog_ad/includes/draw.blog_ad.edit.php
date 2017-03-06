@@ -63,6 +63,7 @@
 	//-->
 </script>
 
+<div class="sharelinkmainwrapper">
 <div class="te_edit share_links_edit">
 	<form id="google_ad_form" enctype="multipart/form-data" class="te" method="post" action="<?php echo htmlspecialchars($postURL); ?>" onsubmit="return check_share_links_form( this );" >
 		<fieldset class="te">
@@ -134,4 +135,5 @@
 
 		</fieldset>
 	</form>
+</div>
 </div>

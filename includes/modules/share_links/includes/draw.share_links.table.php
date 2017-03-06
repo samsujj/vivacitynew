@@ -13,7 +13,7 @@ echo '<link href="includes/modules/share_links/bootstrap.min.css" rel="styleshee
 echo '<script type="text/javascript" src="includes/modules/share_links/bootstrap.min.js"></script>';
 
 ?>
-<link href="includes/modules/share_links/share_links.css" rel="stylesheet">
+<!--<link href="includes/modules/share_links/share_links.css" rel="stylesheet">-->
 <script src="includes/modules/share_links/clipboard.min.js"></script>
 <script language="javascript" type="text/javascript">
 
@@ -279,9 +279,9 @@ echo '<button class="share_btn" onclick="document.location = \'' . h('/share_ass
 }
 
 
-if(@$this->settings['enable_landing_page_manager'] != "No" && @$this->te_permit['landing_page_manager'] == 1) {
+/*if(@$this->settings['enable_landing_page_manager'] != "No" && @$this->te_permit['landing_page_manager'] == 1) {
 	echo '<button class="icon_button"  onclick="document.location = \'' . h($this->url('te_mode=insert')) . '\'; return false;"> Add Landing Page</button>';
-}
+}*/
 
 
 echo '</div>';

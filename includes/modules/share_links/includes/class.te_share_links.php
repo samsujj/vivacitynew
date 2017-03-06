@@ -710,25 +710,25 @@ $mobile_arr = $AI->db->getAll("SELECT * FROM `share_asset` WHERE share_link_id="
 
 						echo '<div class="share_btn5">';
 
-						echo '<button class="btn1 clip_button" id="clip_button_'.$key.'" href_txt="'.util_tracking_url($value, util_cleanup_keystr('share_link_'.$this->db["name"]), $AI->user->userID, null, util_pretty('share_link_'.$this->db["name"])).'" tekey="'.$key.'">Copy Link</button>';
+						echo '<button class="btn1 clip_button btnshareclass" id="clip_button_'.$key.'" href_txt="'.util_tracking_url($value, util_cleanup_keystr('share_link_'.$this->db["name"]), $AI->user->userID, null, util_pretty('share_link_'.$this->db["name"])).'" tekey="'.$key.'">Copy Link</button>';
 						//echo '<div id="link_'.$key.'_copy_success" class="success">Copied!!</div>';
 
 						if(count($banner_arr))
-							echo '<button class="btn1" onclick="show_affiliate_m('.$this->db['id'].',1)">Grab Banner Ads</button>';
+							echo '<button class="btn1 btnshareclass" onclick="show_affiliate_m('.$this->db['id'].',1)">Grab Banner Ads</button>';
 						if(count($display_arr))
-							echo '<button class="btn1" onclick="show_affiliate_m('.$this->db['id'].',2)">Grab Display Ads</button>';
+							echo '<button class="btn1 btnshareclass" onclick="show_affiliate_m('.$this->db['id'].',2)">Grab Display Ads</button>';
 						if(count($mobile_arr))
-							echo '<button class="btn1" onclick="show_affiliate_m('.$this->db['id'].',3)">Grab Mobile Ads</button>';
+							echo '<button class="btn1 btnshareclass" onclick="show_affiliate_m('.$this->db['id'].',3)">Grab Mobile Ads</button>';
 						if(count($email_subject_line_arr))
-							echo '<button class="btn1" onclick="show_affiliate_b('.$this->db['id'].',\'Email Subject Line\')">Grab Email Subject Line</button>';
+							echo '<button class="btn1 btnshareclass" onclick="show_affiliate_b('.$this->db['id'].',\'Email Subject Line\')">Grab Email Subject Line</button>';
 						if(count($google_ad_arr))
-							echo '<button class="btn1" onclick="show_affiliate_g('.$this->db['id'].')">Grab Google Ads</button>';
+							echo '<button class="btn1 btnshareclass" onclick="show_affiliate_g('.$this->db['id'].')">Grab Google Ads</button>';
 						if(count($featured_article_arr))
-							echo '<button class="btn1" onclick="show_affiliate_b('.$this->db['id'].',\'Featured Article\')">Grab Featured Article</button>';
+							echo '<button class="btn1 btnshareclass" onclick="show_affiliate_b('.$this->db['id'].',\'Featured Article\')">Grab Featured Article</button>';
 						if(count($blogs_arr))
-							echo '<button class="btn1" onclick="show_affiliate_b('.$this->db['id'].',\'Blogs\')">Grab Blogs</button>';
+							echo '<button class="btn1 btnshareclass" onclick="show_affiliate_b('.$this->db['id'].',\'Blogs\')">Grab Blogs</button>';
 						if(count($pdf_arr))
-							echo '<button class="btn1" onclick="show_affiliate_pdf()">Grab PDF</button>';
+							echo '<button class="btn1 btnshareclass" onclick="show_affiliate_pdf()">Grab PDF</button>';
 						echo '<div class="clear"></div></div>';
 
 						echo '<div style="display:none;width:120px; text-align:center; font-size:16px; color:#fff; padding:4px 10px; backgroud-color:#079ad1; margin-top:10px;" id="link_'.$key.'_copy_success" class="success">Copied!!</div>';
@@ -758,6 +758,7 @@ $mobile_arr = $AI->db->getAll("SELECT * FROM `share_asset` WHERE share_link_id="
 								if(is_numeric($template_info[1]) && $template_info[0] == "template") {
 
 									$webshots_url = "//webshots.apogeevault.com/webshots/?" . $no_cache . "w=250&url=" . urlencode(AI_CURRENT_URL . "screenshot?s" . $core_set . "&selected_template=" . $template_info[1]);
+
 									echo '<div class="image_block"><img src="' . h($webshots_url) . '" title="'.h($this->db['name']).'" class="drip_thumbnail" width="250" style="cursor:pointer;" onclick="show_link_image(\''.$this->db['id'].'\')" /></div>';
 								}
 							}
@@ -765,7 +766,9 @@ $mobile_arr = $AI->db->getAll("SELECT * FROM `share_asset` WHERE share_link_id="
 
 							echo '<div class="image_block"><img src="' . h($value) . '" title="' . h($this->db['name']) . '" class="drip_thumbnail" width="250" style="cursor:pointer;" onclick="show_link_image(\'' . $this->db['id'] . '\')" /></div>';
 
-							if ($this->db['id'] == 15) {
+							echo '<div id="myModal' . $this->db['id'] . '" class="modal fade"><div class="modal-dialog"><div class="modal-content">	<div class="modal-body modalpopup"><a href="javascript:void(0)"><a class="modalclose" data-dismiss="modal">&Chi;</a><h3>'.$this->db['name'].'</h3><img id="img_area" src="' . h($value) . '" alt="#" class="formulla22shot"></a></div></div></div></div>';
+
+							/*if ($this->db['id'] == 15) {
 								echo '<div id="myModal' . $this->db['id'] . '" class="modal fade"><div class="modal-dialog"><div class="modal-content">	<div class="modal-body modalpopup"><a href="javascript:void(0)"><a class="modalclose" data-dismiss="modal">&Chi;</a><h3>'.$this->db['name'].'</h3><img id="img_area" src="includes/modules/share_links/images/full_formula22.png" alt="#" class="formulla22shot"></a></div></div></div></div>';
 							}elseif($this->db['id'] == 19){
 								echo '<div id="myModal' . $this->db['id'] . '" class="modal fade"><div class="modal-dialog"><div class="modal-content">	<div class="modal-body modalpopup"><a href="javascript:void(0)"><a class="modalclose" data-dismiss="modal">&Chi;</a><h3>'.$this->db['name'].'</h3><img id="img_area" src="includes/modules/share_links/images/full_garcinia.png" alt="#" class="formulla22shot"></a></div></div></div></div>';
@@ -797,7 +800,7 @@ $mobile_arr = $AI->db->getAll("SELECT * FROM `share_asset` WHERE share_link_id="
 								echo '<div id="myModal' . $this->db['id'] . '" class="modal fade"><div class="modal-dialog"><div class="modal-content">	<div class="modal-body modalpopup"><a href="javascript:void(0)"><a class="modalclose" data-dismiss="modal">&Chi;</a><h3>'.$this->db['name'].'</h3><img id="img_area" src="includes/modules/share_links/images/full_affiliate-marketing.png" alt="#" class="formulla22shot"></a></div></div></div></div>';
 							}else{
 								echo '<div id="myModal'.$this->db['id'].'" class="modal fade"><div class="modal-dialog"><div class="modal-content">	<div class="modal-body modalpopup"><a href="javascript:void(0)"><a class="modalclose" data-dismiss="modal">&Chi;</a><h3>'.$this->db['name'].'</h3><img id="img_area" src="" alt="#" class="formulla22shot"></a></div></div></div></div>';
-							}
+							}*/
 
 
 						}

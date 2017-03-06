@@ -3,6 +3,8 @@ global $AI;
 require_once(ai_cascadepath('includes/plugins/landing_pages/class.landing_pages.php'));
 require_once(ai_cascadepath('includes/modules/mlmsignup/class.enrollment_lp.php'));
 
+require_once (ai_cascadepath('includes/modules/scheduled_orders/class.scheduled_order_cart.php'));
+
 require_once(ai_cascadepath('includes/modules/genealogy/class.genealogy.php'));
 
 $gene            = new C_genealogy( $AI->get_setting('structure_show_genealogy') ? C_genealogy::GENEALOGY_TREE : C_genealogy::ENROLLER_TREE );
@@ -65,7 +67,29 @@ if($accept_term == 0) {
         db_query("UPDATE `users` SET `accept_term`=1 WHERE `userID` = " . $userId);
 
 
-        /*$email_name = 'Accept terms';
+        $billing_profile_id = 0;
+
+        $billres = $AI->db->GetAll("SELECT id FROM billing_profiles WHERE account_id =".$userId);
+
+        if(count($billres)){
+            $billing_profile_id = $billres[0]['id'];
+        }
+
+
+        $cart_title = 'Membership Purchase';
+        $interval = 'Yearly';
+        $interval_amount = 10;
+        $so_cart = new C_scheduled_order_cart( $userId, true, 'scheduled orders', $cart_title );
+        $schedule_date = date('Y-m-d', strtotime('+1 year'));
+        $so_cart->set_schedule_date($schedule_date);
+        $so_cart->set_interval($interval, $interval_amount);
+        $so_cart->add_item( 1, 1 );
+        $so_cart->set_billing_profile($billing_profile_id);
+        $so_cart->enable_cart();
+        $so_cart->save();
+
+
+        $email_name = 'Accept terms';
         $send_to = $emailid;
         $send_from = 'iftekarkta@gmail.com';
 
@@ -81,9 +105,14 @@ if($accept_term == 0) {
         $se->set_from($send_from);
         $se->set_defaults_array($defaults);
         $se->set_vars_array($vars);
-        $se->send($send_to);*/
+        $se->send($send_to);
 
-        util_redirect('membership-purchase');
+
+
+
+
+        //util_redirect('membership-purchase');
+        util_redirect('dashboard');
 
     }
 

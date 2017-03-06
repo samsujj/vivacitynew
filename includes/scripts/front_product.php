@@ -1,8 +1,10 @@
 <?php
 
 $products = array();
-//$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `pf`.`folderID`=1 GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
-$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price` FROM `products` `p` INNER JOIN `products2folders` `pf` ON `p`.`product_id`=`pf`.`product_id` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `pf`.`folderID`=12 GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
+$p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price`,`ps`.`alt_prices` FROM `products` `p` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `p`.`product_id` IN (SELECT `product_id` FROM `products2folders` WHERE `folderID` =12) AND `p`.`product_id` NOT IN (SELECT `product_id` FROM `products2folders` WHERE `folderID` =15) GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
+if($_SERVER['SERVER_NAME'] == 'www.vivacitygo.net'){
+    $p_res = db_query("SELECT `p`.`product_id`,`p`.`title`,`p`.`description`,`p`.`features`,`p`.`img_url`,`ps`.`stock_item_id`,`ps`.`price`,`ps`.`alt_prices` FROM `products` `p` INNER JOIN `product_stock_items` `ps` ON `p`.`product_id`=`ps`.`product_id` WHERE `p`.`product_id` IN (SELECT `product_id` FROM `products2folders` WHERE `folderID` =12) GROUP BY `ps`.`product_id` ORDER BY `p`.`title`");
+}
 
 while($p_res && $product = db_fetch_assoc($p_res)) {
     $products[] = $product;

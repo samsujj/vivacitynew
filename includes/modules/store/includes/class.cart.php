@@ -407,7 +407,7 @@ class C_cart
 			echo "\nStock is not an object! Invalid stock ID in function get_product_price(PSID)!\n";
 			return 0.0; // If we allow $stock->get_price(), we will get a fatal error, so just return 0.0 (but the bad object should not be tolerable!) -JonJon 2014-12-05 09:08:36 -1000
 		}
-		return $stock->get_price($this->disable_alt_pricing) * (int) $contents['qty'];
+		return $stock->get_price($this->disable_alt_pricing, $this->userID) * (int) $contents['qty'];
 	}
 	public function get_product_price_v1($id, $contents = array())
 	{

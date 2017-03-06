@@ -4,8 +4,9 @@
 	//DB Table: share_links, Unique ID: share_links, PK Field: id
 	
 	require_once( ai_cascadepath( dirname(__FILE__) . '/includes/class.te_pixel.php' ) );
+require_once ('includes/scripts/vivbackendheader.php');
 
-echo '<link href="includes/modules/pixel/pixel.css" rel="stylesheet">';
+//echo '<link href="includes/modules/pixel/pixel.css" rel="stylesheet">';
 	
 	global $AI;
 
